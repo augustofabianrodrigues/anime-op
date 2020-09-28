@@ -19,8 +19,6 @@ Handles:
 
 ### Models
 
-* AnimeDetails
-
 ```typescript
 type AnimeDetails = {
   id: string
@@ -45,8 +43,6 @@ type AnimeDetails = {
 };
 ```
 
-* Genre
-
 ```typescript
 type Genre = {
   id: string,
@@ -57,8 +53,6 @@ type Genre = {
 };
 ```
 
-* Category
-
 ```typescript
 type Category = {
   id: string,
@@ -68,8 +62,6 @@ type Category = {
   }
 };
 ```
-
-* Character
 
 ```typescript
 type Character = {
@@ -88,8 +80,6 @@ type Character = {
 };
 ```
 
-* Streamer
-
 ```typescript
 type Streamer = {
   id: string,
@@ -101,8 +91,6 @@ type Streamer = {
 ```
 
 ### Collections
-
-* AnimeSearchResults
 
 ```typescript
 type AnimeSearchResults = {
@@ -118,8 +106,6 @@ type AnimeSearchResults = {
 };
 ```
 
-* Genres
-
 ```typescript
 type Genres = Genre[];
 ```
@@ -128,19 +114,17 @@ type Genres = Genre[];
 
 The web components part consists of an AMD compiled web component called `<anime-op-app>`:
   * Handles UI events
-  * Handles navigation with React Router
+  * Handles navigation
 
-### Development
-
-This is considered a separate module, it has it's own dependencies and can be run separately.
-
-### Build
+This is considered a separate module, it has it's own dependencies and is developed separately.
 
 For usage in the _Base App_ it is build as an AMD module which registers the web component.
 
+For both development and build [Direflow](https://direflow.io/get-started) does the trick.
+
 ### Component Hierarchy
 
-WIP
+![Component Hierarchy Outline](./img/component-hierarchy.jpg)
 
 ## Integration
 
@@ -149,6 +133,6 @@ App integration _(base, web components, and API)_ will happen following these st
 * On the _web component_ an event that needs external data is triggered
   * Due to an user interaction
   * From navigating
-* The triggered event can be 'on-search', 'on-more' or 'on-details'
+* The triggered event can be 'on-search', 'on-more' or 'on-request-details'
 * That event is listened on the _AppView_ on the _Base App_
 * Required data is retrieved from the _API_ and updated for the _web component_
