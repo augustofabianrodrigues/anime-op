@@ -2,9 +2,9 @@
 
 The architecture consists of three main pillars:
 
-* **Base App**: Entry point of the web app, handles web request and storing data.
+* **[Base App](#base-app)**: Entry point of the web app, handles web request and storing data.
 * **[Kitsu JSON:API](https://kitsu.docs.apiary.io/)**: The source of truth for the data: search results, animes, genres, etc.
-* **Web Components**: Contains the components which directly manipulate the DOM and build up the whole app UI.
+* **[Web Components](#web-components)**: Contains the components which directly manipulate the DOM and build up the whole app UI.
 
 ![Architecture](./img/architecture.jpg)
 
@@ -120,7 +120,7 @@ This is considered a separate module, it has it's own dependencies and is develo
 
 For usage in the _Base App_ it is build as an AMD module which registers the web component.
 
-For both development and build [Direflow](https://direflow.io/get-started) does the trick.
+For both development and build, [Direflow](https://direflow.io/get-started) does the trick.
 
 ### Component Hierarchy
 

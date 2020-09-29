@@ -23,6 +23,7 @@ The home page searches for any anime by text. There are filters for age rating a
 The initial state of the page loads the animes from the API (paged). As the user types the search field, a debounced/throttled search is triggered.
 
 * While animes are loading, a corresponding skeleton loader is displayed.
+* An event to get more animes is triggered on scrolling, if there are more animes to be loaded.
 * When the user clicks an anime item, the app will navigate to the details page.
 
 The Age Rating filter is defined as:
