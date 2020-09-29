@@ -1,0 +1,5 @@
+# Component build output
+/build
+
+# Component lib output
+/lib
