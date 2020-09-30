@@ -28,10 +28,6 @@ TBD
 
 TBD
 
-## Deploying
-
-TBD
-
 ## Overview
 
 The overview of the project can be found at [docs/overview.md](./docs/overview.md).
@@ -40,9 +36,23 @@ The overview of the project can be found at [docs/overview.md](./docs/overview.m
 
 A complete explanation about the architecture can be found at [docs/architecture.md](./docs/architecture.md).
 
-## Folder Structure
+## Directory Structure
 
-TBD
+```text
+├── base-app
+├── docs
+│   ├── illustrations
+│   ├── architecture.md
+│   └── overview.md
+├── web-components
+│   ├── build
+│   │   └── appBundle.js
+│   ├── src
+│   │   └── (code...)
+│   └── README.md
+└── .gitignore
+```
+> **Note**: The directory structure is simplified
 
 ## Licence
 
