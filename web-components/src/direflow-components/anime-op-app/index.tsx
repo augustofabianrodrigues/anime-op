@@ -11,7 +11,7 @@ export default DireflowComponent.create({
       name: 'font-loader',
       options: {
         google: {
-          families: ['Advent Pro', 'Noto Sans JP'],
+          families: ['Poppins'],
         },
       },
     },

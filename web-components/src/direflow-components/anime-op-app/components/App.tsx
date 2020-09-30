@@ -1,6 +1,17 @@
-import React, { FC, useContext } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import React, { FC, useEffect } from 'react';
+import { Styled } from 'direflow-component';
 import styles from './App.less';
+import HomePage from './home/HomePage';
+
+/**
+ * Fix for viewport units on mobile
+ *
+ * see: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+ */
+function setNavigationBarHeightCSSVariable() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', vh + 'px');
+}
 
 interface AppProps {
   componentTitle: string;
@@ -8,19 +19,29 @@ interface AppProps {
 }
 
 const App: FC<AppProps> = (props) => {
-  const dispatch = useContext(EventContext);
+  useEffect(() => {
+    setNavigationBarHeightCSSVariable();
 
-  const handleClick = () => {
-    const event = new Event('my-event');
-    dispatch(event);
-  };
+    // Whenever the viewport dimensions change, we recalculate the navigation bar height
+    window.addEventListener('resize', setNavigationBarHeightCSSVariable);
+
+    return () => {
+      window.removeEventListener('resize', setNavigationBarHeightCSSVariable);
+    };
+  }, []);
+
+  // External event example:
+  // const dispatch = useContext(EventContext);
+
+  // const handleClick = () => {
+  //   const event = new Event('my-event');
+  //   dispatch(event);
+  // };
 
   return (
     <Styled styles={styles} scoped={false}>
       <div className="app">
-        <h1>
-          Anime OP UI goes here ;)
-        </h1>
+        <HomePage />
       </div>
     </Styled>
   );
