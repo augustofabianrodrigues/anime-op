@@ -1,21 +1,88 @@
 # アニメ OP • Architecture
 
-The architecture consists of three main pillars:
+The web app consists of two basic parts:
 
-* **[Base App](#base-app)**: Entry point of the web app, handles web request and storing data.
-* **[Kitsu JSON:API](https://kitsu.docs.apiary.io/)**: The source of truth for the data: search results, animes, genres, etc.
-* **[Web Components](#web-components)**: Contains the components which directly manipulate the DOM and build up the whole app UI.
+* [The Web Components Library](#web-components-library)
+* [The Base App](#base-app)
 
-![Architecture](./img/architecture.jpg)
+## Web Components Library
+
+It's responsible for rendering the main UI, handling user events, and navigating between pages.
+
+![Web Components Internal Architecture](./illustrations/arch-web-components-internal.svg)
+
+Internally, components are built up of [React.js](https://reactjs.org/) components.
+
+[React Router](https://reactrouter.com/) handles navigation between **home page** and **details page**.
+
+> For reference of how those pages work please head to [the project's overview](./overview.md).
+
+![Web Components External Architecture](./illustrations/arch-web-components-external.svg)
+
+The _React_ app uses [Direflow](https://direflow.io/) for web component encapsulation, and in combination with [_Webpack_](https://webpack.js.org/) it builds the web component into a single [_AMD_](https://github.com/amdjs/amdjs-api/wiki/AMD) bundle.
+
+The bundle will register the web-component into the DOM when it is loaded.
+
+The final output it's a single web component called `anime-op-app`:
+
+```html
+<anime-op-app></anime-op-app>
+```
+
+* It has the same props as the _React App component_ which can be updated by JavaScript.
+* It triggers events for requesting data:
+  * `on-search`: Triggered when a new search for animes is requested by the user.
+  * `on-more`: Triggers when it needs more animes.
+  * `on-view-details`: Triggers when there is navigation to the details page.
+
+TODO: Add more details about the events such as input.
+
+### Development
+
+The code can be found at [_/web-components_](../web-components).
+
+> For folder structure and instructions on how to run and package the web components lib, please refer to its [_README.md_](../web-components/README.md).
 
 ## Base App
 
-It's the core of the web app. Consumes both **Web Components** and **[Kitsu JSON:API](https://kitsu.docs.apiary.io/)**.
+It's responsible for:
 
-Handles:
+* Listening to web components events
+* Updating its props based on events triggered
+* Fetching, parsing, and storing data in respective data structures
 
-* Fetching and storing data (in memory)
-* Listening to _web components_ events and updating its properties.
+![Base App Architecture](./illustrations/arch-base-app.svg)
+
+The data in the app follows [Backbone](https://backbonejs.org/)'s principles of _Collections and Models_.
+
+As we consume a [JSON:API](https://jsonapi.org/), two more libraries were added in top of backbone for model relations and parsing:
+
+* [Backbone-relational.js](http://backbonerelational.org/)
+* [backbone-relational-jsonapi](https://github.com/xbill82/backbone-relational-jsonapi)
+
+### Collections
+
+```typescript
+type AnimeSearchResults = {
+  id: string,
+  attributes: {
+    canonicalTitle: string,
+    averageRating: number,
+    subtype: 'TV' | 'OVA' | 'ONA' | 'special' | 'movie' | 'music',
+    posterImage: {
+      original: number
+    }
+  }
+};
+```
+
+* `AnimeSearchResults` - Used for displaying search results on the home page.
+
+```typescript
+type Genres = Genre[];
+```
+
+* `Genres` - Used for filtering animes by genre.
 
 ### Models
 
@@ -43,6 +110,8 @@ type AnimeDetails = {
 };
 ```
 
+* `AnimeDetails` - Used for displaying detailed anime information at the details page.
+
 ```typescript
 type Genre = {
   id: string,
@@ -53,6 +122,8 @@ type Genre = {
 };
 ```
 
+* `Genre` - Complementary information about the anime. Also used for filtering.
+
 ```typescript
 type Category = {
   id: string,
@@ -62,6 +133,8 @@ type Category = {
   }
 };
 ```
+
+* `Category` - Complementary information about the anime.
 
 ```typescript
 type Character = {
@@ -80,6 +153,8 @@ type Character = {
 };
 ```
 
+* `Character` - Complementary information about the anime.
+
 ```typescript
 type Streamer = {
   id: string,
@@ -90,49 +165,26 @@ type Streamer = {
 };
 ```
 
-### Collections
+* `Streamer` - Complementary information about the anime.
 
-```typescript
-type AnimeSearchResults = {
-  id: string,
-  attributes: {
-    canonicalTitle: string,
-    averageRating: number,
-    subtype: 'TV' | 'OVA' | 'ONA' | 'special' | 'movie' | 'music',
-    posterImage: {
-      original: number
-    }
-  }
-};
-```
+### Development
 
-```typescript
-type Genres = Genre[];
-```
+The code can be found at [_/base-app_](../base-app).
 
-## Web Components
+> For folder structure and instructions on how to run, please refer to its [_README.md_](../base-app/README.md).
 
-The web components part consists of an AMD compiled web component called `<anime-op-app>`:
-  * Handles UI events
-  * Handles navigation
+## Backend • JSON:API
 
-This is considered a separate module, it has it's own dependencies and is developed separately.
-
-For usage in the _Base App_ it is build as an AMD module which registers the web component.
-
-For both development and build, [Direflow](https://direflow.io/get-started) does the trick.
-
-### Component Hierarchy
-
-![Component Hierarchy Outline](./img/component-hierarchy.jpg)
+An open [JSON:API](https://jsonapi.org/) called [Kitsu](https://kitsu.docs.apiary.io/) is consumed for the getting the app's data.
 
 ## Integration
 
-App integration _(base, web components, and API)_ will happen following these steps:
+![Integration Architecture](./illustrations/arch-integration.svg)
 
-* On the _web component_ an event that needs external data is triggered
-  * Due to an user interaction
-  * From navigating
-* The triggered event can be 'on-search', 'on-more' or 'on-request-details'
-* That event is listened on the _AppView_ on the _Base App_
-* Required data is retrieved from the _API_ and updated for the _web component_
+The _Base App_ loads the web component through [Require.js](https://requirejs.org/) and it is called as the markup of the _AppView_.
+
+Then the _AppView_ attaches events listeners to the web component.
+
+When an event is triggered, an HTTP request is made to the respective API resource through a _collection_ or _model_.
+
+When the data its returned, the _AppView_ updates the corresponding DOM props of the web component.
