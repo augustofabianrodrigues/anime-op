@@ -6,6 +6,8 @@ It's build on top of [Direflow](https://direflow.io/) and packaged as an **AMD w
 
 ## Installation
 
+**Make sure you are at _/web-components_ directory before running terminal commands!**
+
 With [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/) installed, run from a terminal window:
 
 ```bash
@@ -14,7 +16,7 @@ yarn
 
 > **Note**: it is recommended to use [Yarn](https://yarnpkg.com/) for this project because of the lock file `(yarn.lock)`.
 >
-> If still wanna stick with npm [here's a guide for you](https://classic.yarnpkg.com/en/docs/migrating-from-npm/) 😉
+> If you still wanna stick with npm [here's a guide for you](https://classic.yarnpkg.com/en/docs/migrating-from-npm/) 😉
 
 ## Starting
 
