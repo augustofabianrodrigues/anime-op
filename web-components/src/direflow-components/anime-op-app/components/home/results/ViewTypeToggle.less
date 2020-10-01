@@ -1,0 +1,28 @@
+@import '../../../less/pallette.less';
+
+.view-type-toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 1rem;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: @text-base;
+
+    &.selected {
+      color: @indigo-lighter;
+    }
+
+    svg {
+      path {
+        stroke: currentColor;
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { Styled } from 'direflow-component';
 import styles from './HomePage.less';
 import Hero from './Hero';
 import SearchBar from './search/SearchBar';
+import SearchResults from './results/SearchResults';
 
 const HomePage: FC = () => {
   return (
@@ -13,7 +14,10 @@ const HomePage: FC = () => {
           <Hero />
         </header>
 
-        <SearchBar />
+        <main>
+          <SearchBar />
+          <SearchResults />
+        </main>
       </div>
     </Styled>
   );
