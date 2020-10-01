@@ -10,6 +10,12 @@ const SearchResultsGrid: FC = () => {
         <AnimeCard />
         <AnimeCard />
         <AnimeCard />
+        <AnimeCard />
+        <AnimeCard />
+        <AnimeCard />
+        <AnimeCard />
+        <AnimeCard />
+        <AnimeCard />
       </div>
     </Styled>
   );

@@ -9,10 +9,20 @@
   overflow: hidden;
   color: @text-base;
 
-  img {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  .cover {
+    position: relative;
+
+    img {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .show-type {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0.5rem;
+    }
   }
 
   .title {

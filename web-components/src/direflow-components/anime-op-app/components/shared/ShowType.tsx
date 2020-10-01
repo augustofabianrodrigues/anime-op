@@ -5,7 +5,8 @@ import styles from './ShowType.less';
 const ShowType: FC = () => {
   return (
     <Styled styles={styles}>
-      <span className="show-type">
+      <span className="show-type tv">
+        TV
       </span>
     </Styled>
   );
