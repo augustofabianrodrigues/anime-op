@@ -20,7 +20,7 @@ function renderStars(rating: number) {
 const StarsRating: FC = () => {
   // TODO: Replace `Math.random()` for a prop that represents the average rating
   const rating = Math.random() * STARS_COUNT;
-  const title = `Rating: ${rating.toFixed(1)}/${STARS_COUNT.toFixed(1)}`;
+  const title = `Rating: ${rating.toFixed(1)} / ${STARS_COUNT.toFixed(1)}`;
 
   return (
     <Styled styles={styles}>
