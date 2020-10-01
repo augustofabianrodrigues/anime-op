@@ -1,12 +1,24 @@
 import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
+import classNames from 'classnames';
+import ViewType from './ViewTypeEnum';
 import styles from './ViewTypeToggle.less';
 
-const ViewTypeToggle: FC = () => {
+interface ViewTypeToggleProps {
+  value: ViewType;
+  onChange: (value: ViewType) => void;
+}
+
+const ViewTypeToggle: FC<ViewTypeToggleProps> = (props) => {
   return (
     <Styled styles={styles}>
       <div className="view-type-toggle">
-        <button className="selected">
+        <button
+          type="button"
+          disabled={props.value === ViewType.Grid}
+          className={classNames({ selected: props.value === ViewType.Grid })}
+          onClick={() => props.onChange(ViewType.Grid)}
+        >
           <svg
             width="25"
             height="24"
@@ -45,7 +57,12 @@ const ViewTypeToggle: FC = () => {
           </svg>
           Grid
         </button>
-        <button>
+        <button
+          type="button"
+          disabled={props.value === ViewType.List}
+          className={classNames({ selected: props.value === ViewType.List })}
+          onClick={() => props.onChange(ViewType.List)}
+        >
           <svg
             width="25"
             height="24"

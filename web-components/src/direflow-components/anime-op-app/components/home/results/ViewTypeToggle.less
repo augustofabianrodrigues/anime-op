@@ -14,13 +14,20 @@
     padding: 0.5rem 1rem;
     font-weight: 500;
     color: @text-base;
+    transition: color 300ms ease-in-out;
 
     &.selected {
       color: @indigo-lighter;
+      cursor: default;
+    }
+
+    &:hover:not(.selected) {
+      color: darken(@indigo-lighter, 5%);
     }
 
     svg {
       path {
+        transition: stroke 300ms ease-in-out;
         stroke: currentColor;
       }
     }
