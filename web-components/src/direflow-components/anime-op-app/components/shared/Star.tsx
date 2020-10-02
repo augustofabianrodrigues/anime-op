@@ -7,14 +7,9 @@ interface StarProps {
 const HEX_COLOR_FILLED = '#F6E05E';
 const HEX_COLOR_EMPTY = '#718096';
 
-function* starPaintIdGenerator(): Generator<number, number, number> {
-  let next = 0;
-  while (true) {
-    yield next++;
-  }
+function generateId (): string {
+  return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
 }
-
-const starPaintId = starPaintIdGenerator();
 
 function renderGradientOffsets(fillRatio: number) {
   if (fillRatio <= 0) {
@@ -35,7 +30,7 @@ function renderGradientOffsets(fillRatio: number) {
 }
 
 const Star: FC<StarProps> = (props) => {
-  const paintId = `paint${starPaintId.next().value}_star_linear`;
+  const paintId = 's_' + generateId();
 
   return (
     <svg

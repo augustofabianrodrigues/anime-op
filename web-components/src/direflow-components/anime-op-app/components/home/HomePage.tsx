@@ -6,7 +6,7 @@ import SearchBar from './search/SearchBar';
 import SearchResults from './results/SearchResults';
 import Backdrop from '../slide-drawer/Backdrop';
 import SlideDrawer from '../slide-drawer/SlideDrawer';
-import FiltersDrawer from './search/FiltersDrawer';
+import FiltersDrawer from './search/filters/FiltersDrawer';
 
 const HomePage: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);

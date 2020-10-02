@@ -1,6 +1,8 @@
-@import '../../../less/pallette.less';
+@import '../../../../less/pallette.less';
 
 .filters-drawer {
+  color: @text-base;
+
   .filters-header {
     display: flex;
     flex-direction: row;
@@ -13,7 +15,6 @@
     padding: 1rem;
     font-size: 20px;
     font-weight: 500;
-    color: @text-base;
     background: @gray-base-lighter;
 
     .filters-header-title {
@@ -27,6 +28,18 @@
     svg {
       height: 1.5rem;
       width: 1.5rem;
+    }
+  }
+
+  main {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 500;
     }
   }
 }

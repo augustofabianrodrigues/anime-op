@@ -1,7 +1,8 @@
 import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
 import styles from './FiltersDrawer.less';
-import FiltersIcon from './FiltersIcon';
+import FiltersIcon from '../FiltersIcon';
+import AgeRating from './AgeRating';
 
 interface FiltersDrawerProps {
   onClose: () => void;
@@ -41,6 +42,10 @@ const FiltersDrawer: FC<FiltersDrawerProps> = ({ onClose }) => {
             </svg>
           </button>
         </header>
+
+        <main>
+          <AgeRating />
+        </main>
       </aside>
     </Styled>
   );
