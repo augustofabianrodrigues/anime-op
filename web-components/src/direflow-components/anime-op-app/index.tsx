@@ -1,5 +1,5 @@
 import { DireflowComponent } from 'direflow-component';
-import App from './components/App';
+import App from './components/RoutedApp';
 
 export default DireflowComponent.create({
   component: App,

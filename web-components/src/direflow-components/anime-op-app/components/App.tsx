@@ -1,8 +1,11 @@
 import React, { FC, useEffect, useRef } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { Styled } from 'direflow-component';
 import styles from './App.less';
 import HomePage from './home/HomePage';
 import AppContext from './AppContext';
+import DetailsPage from './details/DetailsPage';
 
 /**
  * Fix for viewport units on mobile
@@ -32,6 +35,7 @@ const App: FC<AppProps> = (props) => {
   }, []);
 
   const appElement = useRef(null);
+  const location = useLocation();
 
   // External event example:
   // const dispatch = useContext(EventContext);
@@ -45,7 +49,26 @@ const App: FC<AppProps> = (props) => {
     <AppContext.Provider value={appElement}>
       <Styled styles={styles} scoped={false}>
         <div className="app" ref={appElement}>
-          <HomePage />
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              key={location.pathname}
+              classNames="route"
+              timeout={300}
+              addEndListener={(node, done) =>
+                node.addEventListener('transitionend', done, false)
+              }
+            >
+              <Switch location={location}>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+
+                <Route exact path="/details/:id">
+                  <DetailsPage />
+                </Route>
+              </Switch>
+            </CSSTransition>
+          </SwitchTransition>
         </div>
       </Styled>
     </AppContext.Provider>

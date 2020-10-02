@@ -1,22 +1,30 @@
 @import '../../../../less/pallette.less';
 
 .anime-list-item {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  column-gap: 0.5rem;
-  min-height: 4rem;
-  height: auto;
+  list-style-type: none;
   width: 100%;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  color: @text-base;
-  font-weight: 500;
-  background: @gray-base-light;
+  height: auto;
+
+  & > a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 0.5rem;
+    min-height: 4rem;
+    height: auto;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    color: @text-base;
+    font-weight: 500;
+    background: @gray-base-light;
+  }
 
   &:nth-child(odd) {
-    background: @gray-base-lighter;
+    & > a {
+      background: @gray-base-lighter;
+    }
   }
 }

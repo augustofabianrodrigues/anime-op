@@ -1,5 +1,6 @@
 import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import ShowType from '../../../shared/ShowType';
 import StarsRating from '../../../shared/StarsRating';
 import styles from './AnimeCard.less';
@@ -7,7 +8,7 @@ import styles from './AnimeCard.less';
 const AnimeCard: FC = () => {
   return (
     <Styled styles={styles}>
-      <div tabIndex={0} className="anime-card">
+      <Link to="/details/1" className="anime-card">
         <div className="cover">
           <img
             alt="Nanatsu no Taizai Cover"
@@ -21,7 +22,7 @@ const AnimeCard: FC = () => {
           <span className="episodes-counter">24 episodes</span>
           <StarsRating />
         </div>
-      </div>
+      </Link>
     </Styled>
   );
 };
