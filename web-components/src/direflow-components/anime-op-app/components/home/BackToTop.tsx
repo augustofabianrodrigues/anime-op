@@ -15,7 +15,7 @@ const BackToTop: FC = () => {
 
     const appScrollHandler = () => {
       const { offsetHeight = 0, scrollTop = 0 } = currentAppElement || {};
-      setActive(() => scrollTop > offsetHeight);
+      setActive(() => offsetHeight > 0 && scrollTop > offsetHeight / 2);
     };
 
     appScrollHandler();
