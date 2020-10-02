@@ -1,7 +1,8 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { Styled } from 'direflow-component';
 import styles from './App.less';
 import HomePage from './home/HomePage';
+import AppContext from './AppContext';
 
 /**
  * Fix for viewport units on mobile
@@ -30,6 +31,8 @@ const App: FC<AppProps> = (props) => {
     };
   }, []);
 
+  const appElement = useRef(null);
+
   // External event example:
   // const dispatch = useContext(EventContext);
 
@@ -39,11 +42,13 @@ const App: FC<AppProps> = (props) => {
   // };
 
   return (
-    <Styled styles={styles} scoped={false}>
-      <div className="app">
-        <HomePage />
-      </div>
-    </Styled>
+    <AppContext.Provider value={appElement}>
+      <Styled styles={styles} scoped={false}>
+        <div className="app" ref={appElement}>
+          <HomePage />
+        </div>
+      </Styled>
+    </AppContext.Provider>
   );
 };
 

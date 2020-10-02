@@ -7,6 +7,7 @@ import SearchResults from './results/SearchResults';
 import Backdrop from '../slide-drawer/Backdrop';
 import SlideDrawer from '../slide-drawer/SlideDrawer';
 import FiltersDrawer from './search/filters/FiltersDrawer';
+import BackToTop from './BackToTop';
 
 const HomePage: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -30,6 +31,8 @@ const HomePage: FC = () => {
           <SearchBar onToggleFilters={handleToggleFilters} />
           <SearchResults />
         </main>
+
+        <BackToTop />
       </div>
     </Styled>
   );
