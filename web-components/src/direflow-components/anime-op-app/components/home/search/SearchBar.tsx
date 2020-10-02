@@ -4,12 +4,16 @@ import styles from './SearchBar.less';
 import SearchInput from './SearchInput';
 import ToggleFiltersButton from './ToggleFiltersButton';
 
-const SearchBar: FC = () => {
+interface SearchBarProps {
+  onToggleFilters: () => void;
+}
+
+const SearchBar: FC<SearchBarProps> = ({ onToggleFilters }) => {
   return (
     <Styled styles={styles}>
       <section className="search-bar">
         <SearchInput />
-        <ToggleFiltersButton />
+        <ToggleFiltersButton onClick={onToggleFilters} />
       </section>
     </Styled>
   );

@@ -1,0 +1,32 @@
+@import '../../../less/pallette.less';
+
+.filters-drawer {
+  .filters-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    z-index: 12;
+    top: 0;
+    padding: 1rem;
+    font-size: 20px;
+    font-weight: 500;
+    color: @text-base;
+    background: @gray-base-lighter;
+
+    .filters-header-title {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      column-gap: 0.5rem;
+      align-items: center;
+    }
+
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+}
