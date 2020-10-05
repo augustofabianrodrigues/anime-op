@@ -1,0 +1,38 @@
+{
+  "name": "anime-op",
+  "version": "1.0.0",
+  "description": "Simple web app for anime (アニメ) searching.",
+  "main": "base-app/public/index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "run-s build:base-app build:web-components dist",
+    "build:base-app": "yarn --cwd \"base-app\" build",
+    "build:web-components": "yarn --cwd \"web-components\" build",
+    "dist": "copyfiles -u 2 base-app/public/**/* dist",
+    "postinstall": "run-s install:**",
+    "install:base-app": "yarn --cwd \"base-app\" install",
+    "install:web-components": "yarn --cwd \"web-components\" install",
+    "test": "run-s test:web-components",
+    "test:web-components": "yarn --cwd \"web-components\" test",
+    "serve": "run-s build:web-components start:base-app",
+    "start:base-app": "yarn --cwd \"base-app\" start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augustofabianrodrigues/anime-op.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/augustofabianrodrigues/anime-op/issues"
+  },
+  "homepage": "https://github.com/augustofabianrodrigues/anime-op#readme",
+  "devDependencies": {
+    "copyfiles": "^2.4.0",
+    "npm-run-all": "^4.1.5",
+    "yarn": "^1.22.10"
+  }
+}
