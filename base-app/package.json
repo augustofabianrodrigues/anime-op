@@ -1,0 +1,28 @@
+{
+  "name": "anime-op-base-app",
+  "version": "1.0.0",
+  "description": "Anime OP entry app.",
+  "author": "Augusto Fabian Rodrigues <augustofabianrodrigues@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "anime",
+    "op",
+    "onboarding",
+    "requirejs"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/augustofabianrodrigues/anime-op"
+  },
+  "main": "index.html",
+  "scripts": {
+    "start": "direflow-scripts start",
+    "build": "r.js -o build.js",
+    "build:win": "r.js.cmd -o build.js",
+    "test": "direflow-scripts test"
+  },
+  "devDependencies": {
+    "requirejs": "^2.3.6"
+  }
+}

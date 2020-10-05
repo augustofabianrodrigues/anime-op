@@ -10,7 +10,9 @@ module.exports = (config, env) => {
     env === 'production'
       ? {
           ...config.output,
-          libraryTarget: 'amd',
+          library: 'anime-op-app',
+          libraryTarget: 'umd',
+          umdNamedDefine: true
         }
       : config.output;
 

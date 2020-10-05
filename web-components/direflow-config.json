@@ -1,7 +1,7 @@
 {
   "build": {
     "componentPath": "direflow-components",
-    "filename": "appBundle.js",
+    "filename": "appBundle.min.js",
     "emitSourceMap": false
   }
 }
