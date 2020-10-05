@@ -1,6 +1,10 @@
 # アニメ OP
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8baeaa59-bd4a-4249-b25a-2f4bcaa2bf14/deploy-status)](https://app.netlify.com/sites/anime-op/deploys)
+
 Simple web app for anime _(アニメ)_ searching.
+
+> Live app: https://anime-op.netlify.app/
 
 > **Anime** (Japanese: アニメ, pronounced (`[a.ɲi.me]`) is hand-drawn and computer animation originating from Japan. _Anime_, a term derived from the English word animation, is used in Japanese to describe all animated works, regardless of origin. Outside of Japan, anime can refer either to animated works produced in Japan, or to their common visual style...
 >
