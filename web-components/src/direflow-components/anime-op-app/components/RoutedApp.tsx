@@ -1,11 +1,7 @@
 import React, { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-
-interface AppProps {
-  componentTitle: string;
-  sampleList: string[];
-}
+import AppProps from './AppProps';
 
 const RoutedApp: FC<AppProps> = (props) => {
   return (
@@ -16,12 +12,11 @@ const RoutedApp: FC<AppProps> = (props) => {
 };
 
 RoutedApp.defaultProps = {
-  componentTitle: 'Web Components',
-  sampleList: [
-    'Create with React',
-    'Build as Web Component',
-    'Use it anywhere!',
-  ],
+  searchResults: {
+    hasMore: false,
+    loading: false,
+    items: [],
+  },
 };
 
 export default RoutedApp;

@@ -4,7 +4,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import SearchResultsGrid from './grid/SearchResultsGrid';
 import SearchResultsList from './list/SearchResultsList';
 import styles from './SearchResults.less';
-import ViewType from './ViewTypeEnum';
+import ViewType from '../../../models/ViewTypeEnum';
 import ViewTypeToggle from './ViewTypeToggle';
 
 const SearchResults: FC = () => {

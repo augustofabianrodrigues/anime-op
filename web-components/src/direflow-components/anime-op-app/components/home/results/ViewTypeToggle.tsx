@@ -1,7 +1,7 @@
 import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import ViewType from './ViewTypeEnum';
+import ViewType from '../../../models/ViewTypeEnum';
 import styles from './ViewTypeToggle.less';
 
 interface ViewTypeToggleProps {

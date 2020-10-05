@@ -1,4 +1,4 @@
-enum AgeRating {
+enum AgeRatingEnum {
   GeneralAudiences = 'G',
   ParentalGuidanceSuggested = 'PG',
   Restricted = 'R',
@@ -6,4 +6,4 @@ enum AgeRating {
   // Explicit = 'R18', -- No, it won't be available 🙈
 }
 
-export default AgeRating;
+export default AgeRatingEnum;

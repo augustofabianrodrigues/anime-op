@@ -1,11 +1,15 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useContext, useEffect, useRef } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import { Styled } from 'direflow-component';
+import { EventContext, Styled } from 'direflow-component';
+import debounce from 'lodash/debounce';
 import styles from './App.less';
 import HomePage from './home/HomePage';
 import AppContext from './AppContext';
+import AppProps from './AppProps';
 import DetailsPage from './details/DetailsPage';
+import SearchStore from '../stores/SearchStore';
+import SearchInputModel from '../models/SearchInputModel';
 
 /**
  * Fix for viewport units on mobile
@@ -17,12 +21,9 @@ function setNavigationBarHeightCSSVariable() {
   document.documentElement.style.setProperty('--vh', vh + 'px');
 }
 
-interface AppProps {
-  componentTitle: string;
-  sampleList: string[];
-}
+const App: FC<AppProps> = ({ searchResults }) => {
+  const dispatch = useContext(EventContext);
 
-const App: FC<AppProps> = (props) => {
   useEffect(() => {
     setNavigationBarHeightCSSVariable();
 
@@ -34,16 +35,33 @@ const App: FC<AppProps> = (props) => {
     };
   }, []);
 
+  useEffect(() => {
+    const debouncedDispatch = debounce((input: SearchInputModel) => {
+      dispatch(
+        new CustomEvent<SearchInputModel>('search', { detail: input })
+      );
+    }, 500);
+
+    return SearchStore.createReaction(
+      (s) => s.input,
+      (input, _, store) => {
+        if (!store.results.loading) {
+          debouncedDispatch(input);
+        }
+      },
+      { runNow: true }
+    );
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log(searchResults);
+    SearchStore.update((s) => {
+      s.results = { ...searchResults };
+    });
+  }, [searchResults]);
+
   const appElement = useRef(null);
   const location = useLocation();
-
-  // External event example:
-  // const dispatch = useContext(EventContext);
-
-  // const handleClick = () => {
-  //   const event = new Event('my-event');
-  //   dispatch(event);
-  // };
 
   return (
     <AppContext.Provider value={appElement}>
@@ -73,15 +91,6 @@ const App: FC<AppProps> = (props) => {
       </Styled>
     </AppContext.Provider>
   );
-};
-
-App.defaultProps = {
-  componentTitle: 'Web Components',
-  sampleList: [
-    'Create with React',
-    'Build as Web Component',
-    'Use it anywhere!',
-  ],
 };
 
 export default App;

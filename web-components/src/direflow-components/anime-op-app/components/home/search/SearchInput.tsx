@@ -2,11 +2,22 @@ import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
 import styles from './SearchInput.less';
 
-const SearchInput: FC = () => {
+interface SearchInputProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+const SearchInput: FC<SearchInputProps> = ({ value, onChange }) => {
   return (
     <Styled styles={styles}>
       <div className="search-input">
-        <input type="text" name="query" placeholder="Type to search..." />
+        <input
+          type="text"
+          name="query"
+          placeholder="Type to search..."
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
         <svg
           width="24"
           height="24"

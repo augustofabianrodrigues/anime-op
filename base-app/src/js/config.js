@@ -1,5 +1,8 @@
 define([], function () {
   return {
-    baseApiPath: 'https://kitsu.io/api/edge'
+    api: {
+      path: 'https://kitsu.io/api/edge',
+      pageLimit: 20,
+    },
   };
 });

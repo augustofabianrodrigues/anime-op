@@ -2,7 +2,7 @@ import { Styled } from 'direflow-component';
 import React, { FC, useState } from 'react';
 import LabeledCheckbox from '../../../shared/LabeledCheckbox';
 import styles from './AgeRating.less';
-import AgeRatingEnum from './AgeRatingEnum';
+import AgeRatingEnum from '../../../../models/AgeRatingEnum';
 
 const ageRatingLabels = {
   [AgeRatingEnum.GeneralAudiences.toString()]: 'General Audiences',
