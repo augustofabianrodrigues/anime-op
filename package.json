@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "run-s build:base-app build:web-components dist",
+    "build": "run-s build:web-components build:base-app dist",
     "build:base-app": "yarn --cwd \"base-app\" build",
     "build:web-components": "yarn --cwd \"web-components\" build",
     "dist": "copyfiles -u 2 base-app/public/**/* dist",
