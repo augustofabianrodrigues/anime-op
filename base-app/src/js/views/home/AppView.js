@@ -10,10 +10,8 @@ define([
     el: $('#router-view'),
 
     initialize: function () {
-      this._animeCollection = new AnimeCollection;
+      this._animeCollection = new AnimeCollection();
       this._animeOpApp = null;
-
-      window.getAnimeCollection = () => this._animeCollection;
 
       var self = this;
       this._animeCollection.on('update', function () {

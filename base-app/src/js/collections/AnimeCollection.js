@@ -1,8 +1,8 @@
-define([
-  'backbone',
-  'config',
-  'models/Anime'
-], function (Backbone, config, Anime) {
+define(['backbone', 'config', 'models/Anime'], function (
+  Backbone,
+  config,
+  Anime
+) {
   console.log(config);
   var AnimesCollection = Backbone.Collection.extend({
     model: Anime,
@@ -29,7 +29,7 @@ define([
         error: function () {
           console.log('error', arguments);
         },
-      })
+      });
     },
   });
 
