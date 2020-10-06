@@ -1,5 +1,159 @@
+@import '../../less/pallette.less';
+
+@max-width: 80rem;
+
 .details-page {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  margin: auto;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    width: 100%;
+    max-width: @max-width;
+    height: 100%;
+    margin: 0 auto;
+
+    .player {
+      width: 100%;
+    }
+
+    .main-info {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      row-gap: 0.25rem;
+      padding: 1rem;
+
+      .title {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .subtype-and-rating {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        column-gap: 1rem;
+      }
+
+      .episode-count {
+        font-size: 18px;
+      }
+    }
+
+    .regular-section {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      row-gap: 0.5rem;
+      padding: 1rem;
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .titles-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        row-gap: 1rem;
+
+        li {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          column-gap: 1rem;
+
+          .lang {
+            background: @gray-base-light;
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+            min-width: 5.25rem;
+            text-align: center;
+          }
+        }
+      }
+
+      .streamer-list {
+        list-style-type: disc;
+        list-style-position: inside;
+
+        li > a {
+          color: lighten(@indigo-lighter, 10%);
+          transition: color 200ms linear;
+          text-decoration: underline;
+
+          &:hover {
+            color: lighten(@indigo-lighter, 20%);
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      padding: 1rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+      grid-template-areas:
+        'player main-info'
+        'player age-rating'
+        'synopsis synopsis'
+        'genres categories'
+        'titles streamers';
+      grid-template-columns: 36rem 1fr;
+      grid-template-rows: auto 1fr;
+      column-gap: 1rem;
+      row-gap: 1rem;
+
+      .player {
+        grid-area: player;
+      }
+
+      .main-info {
+        grid-area: main-info;
+        padding: 0;
+      }
+
+      .regular-section {
+        padding: 0;
+      }
+
+      .synopsis {
+        grid-area: synopsis;
+      }
+
+      .age-rating {
+        grid-area: age-rating;
+      }
+
+      .genres {
+        grid-area: genres;
+      }
+
+      .categories {
+        grid-area: categories;
+      }
+
+      .titles {
+        grid-area: titles;
+      }
+
+      .streamers {
+        grid-area: streamers;
+      }
+    }
+  }
 }
