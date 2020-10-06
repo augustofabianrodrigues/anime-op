@@ -1,5 +1,5 @@
 import { Styled } from 'direflow-component';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import LabeledCheckbox from '../../../shared/LabeledCheckbox';
 import styles from './AgeRating.less';
 import AgeRatingEnum from '../../../../models/AgeRatingEnum';
@@ -10,17 +10,14 @@ const ageRatingLabels = {
   [AgeRatingEnum.Restricted.toString()]: 'Restricted',
 };
 
-const AgeRating: FC = () => {
-  // TODO: Uplift state
-  const [values, setValues] = useState([
-    AgeRatingEnum.GeneralAudiences,
-    AgeRatingEnum.ParentalGuidanceSuggested,
-  ]);
+interface AgeRatingProps {
+  values: AgeRatingEnum[];
+  onChange: (values: AgeRatingEnum[]) => void;
+}
 
+const AgeRating: FC<AgeRatingProps> = ({ values, onChange }) => {
   const handleCheckboxChange = (type: AgeRatingEnum, value: boolean) => {
-    setValues((prevValues) =>
-      value ? [...prevValues, type] : prevValues.filter((v) => v !== type)
-    );
+    onChange(value ? [...values, type] : values.filter((v) => v !== type));
   };
 
   const renderCheckbox = (type: AgeRatingEnum) => {

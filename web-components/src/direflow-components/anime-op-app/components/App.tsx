@@ -1,22 +1,34 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useContext, useEffect, useRef } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import { Styled } from 'direflow-component';
+import { EventContext, Styled } from 'direflow-component';
 import styles from './App.less';
 import HomePage from './home/HomePage';
 import AppContext from './AppContext';
 import AppProps from './AppProps';
 import DetailsPage from './details/DetailsPage';
 import SearchStore from '../stores/SearchStore';
-import SearchStoreReactions from './store/SearchStoreReactions';
+import SearchStoreReactions from './stores/SearchStoreReactions';
 import SetNavigationBarHeightCSSVariable from './utils/SetNavigationBarHeightCSSVariable';
+import LoadGenresEvent from '../events/LoadGenresEvent';
+import GenreStore from '../stores/GenreStore';
 
-const App: FC<AppProps> = ({ searchResults }) => {
+const App: FC<AppProps> = ({ searchResults, genres }) => {
+  const dispatch = useContext(EventContext);
+
+  useEffect(() => {
+    dispatch(new LoadGenresEvent());
+  }, [dispatch]);
+
   useEffect(() => {
     SearchStore.update((s) => {
       s.results = { ...searchResults };
     });
   }, [searchResults]);
+
+  useEffect(() => {
+    GenreStore.update(() => genres);
+  }, [genres]);
 
   const appElement = useRef(null);
   const location = useLocation();

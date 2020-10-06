@@ -4,7 +4,13 @@ define(['backbone', 'config', 'models/AnimeSearchItem'], function (
   AnimeSearchItem
 ) {
   var fields = {
-    anime: ['canonicalTitle', 'averageRating', 'subtype', 'posterImage', 'episodeCount'],
+    anime: [
+      'canonicalTitle',
+      'averageRating',
+      'subtype',
+      'posterImage',
+      'episodeCount',
+    ],
   };
 
   var AnimeSearchResults = Backbone.Collection.extend({
@@ -26,7 +32,14 @@ define(['backbone', 'config', 'models/AnimeSearchItem'], function (
     query: function (input) {
       var ageRatings =
         (input.ageRatings.length && input.ageRatings.join(',')) || undefined;
-      var genres = (input.genres.length && input.genres.join(',')) || undefined;
+      var genres =
+        (input.genres.length &&
+          input.genres
+            .map(function (genre) {
+              return genre.slug;
+            })
+            .join(',')) ||
+        undefined;
 
       this.fetch({
         reset: true,
@@ -34,14 +47,11 @@ define(['backbone', 'config', 'models/AnimeSearchItem'], function (
           'fields[anime]': fields.anime.join(','),
           'filter[text]': input.query || undefined,
           'filter[ageRating]': ageRatings,
-          'filter[genre]': genres,
+          'filter[genres]': genres,
           'page[limit]': config.api.pageLimit,
         },
-        success: function (collection) {
-          console.log('success', arguments);
-        },
         error: function () {
-          console.log('error', arguments);
+          console.error('error fetching animes', arguments);
         },
       });
     },

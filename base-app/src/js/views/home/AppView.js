@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'collections/AnimeSearchResults',
+  'collections/Genres',
   'tpl!templates/home/app-template.tpl',
-], function ($, _, Backbone, AnimeSearchResults, appTemplate) {
+], function ($, _, Backbone, AnimeSearchResults, Genres, appTemplate) {
   var AppView = Backbone.View.extend({
     el: $('#router-view'),
 
@@ -18,8 +19,15 @@ define([
       };
     },
 
+    _updateGenres: function () {
+      this._animeOpApp.genres = this._genres.models.map(function (genre) {
+        return Object.assign({ id: genre.id }, genre.attributes);
+      });
+    },
+
     initialize: function () {
       this._animeSearchResults = new AnimeSearchResults();
+      this._genres = new Genres();
       this._animeOpApp = null;
 
       var self = this;
@@ -37,6 +45,10 @@ define([
           { loading: true }
         );
       });
+
+      this._genres.on('reset', function () {
+        self._updateGenres();
+      });
     },
 
     render: function () {
@@ -51,6 +63,9 @@ define([
       });
       animeOpApp.on('loadmore', function () {
         self._animeSearchResults.next();
+      });
+      animeOpApp.on('loadgenres', function () {
+        self._genres.load();
       });
     },
   });

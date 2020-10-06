@@ -16,9 +16,7 @@ const SearchStoreReactions: FC = () => {
     return SearchStore.createReaction(
       (s) => s.input,
       (input, _, store) => {
-        if (!store.results.loading) {
-          debouncedDispatch(input);
-        }
+        debouncedDispatch(input);
       },
 
       // Triggers the search reaction on mount

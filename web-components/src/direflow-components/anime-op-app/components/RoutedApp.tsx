@@ -17,6 +17,7 @@ RoutedApp.defaultProps = {
     loading: false,
     items: [],
   },
+  genres: []
 };
 
 export default RoutedApp;

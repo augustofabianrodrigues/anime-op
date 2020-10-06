@@ -41,4 +41,16 @@
         });
     }, 500);
   });
+
+  element.addEventListener('loadgenres', (e) => {
+    console.log(e);
+
+    setTimeout(() => {
+      fetch('/loadgenres_mock.json')
+        .then((res) => res.json())
+        .then((results) => {
+          element.genres = results;
+        });
+    }, 500);
+  });
 })();

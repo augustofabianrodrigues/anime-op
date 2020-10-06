@@ -3,12 +3,30 @@ import React, { FC } from 'react';
 import styles from './FiltersDrawer.less';
 import FiltersIcon from '../FiltersIcon';
 import AgeRating from './AgeRating';
+import SearchStore from '../../../../stores/SearchStore';
+import AgeRatingEnum from '../../../../models/AgeRatingEnum';
+import Genre from './Genre';
+import GenreModel from '../../../../models/GenreModel';
 
 interface FiltersDrawerProps {
   onClose: () => void;
 }
 
 const FiltersDrawer: FC<FiltersDrawerProps> = ({ onClose }) => {
+  const { ageRatings, genres } = SearchStore.useState((s) => s.input);
+
+  const handleAgeRatingsChange = (values: AgeRatingEnum[]) => {
+    SearchStore.update((s) => {
+      s.input.ageRatings = values;
+    });
+  };
+
+  const handleGenresChange = (values: GenreModel[]) => {
+    SearchStore.update((s) => {
+      s.input.genres = values;
+    });
+  };
+
   return (
     <Styled styles={styles}>
       <aside className="filters-drawer">
@@ -44,7 +62,8 @@ const FiltersDrawer: FC<FiltersDrawerProps> = ({ onClose }) => {
         </header>
 
         <main>
-          <AgeRating />
+          <AgeRating values={ageRatings} onChange={handleAgeRatingsChange} />
+          <Genre values={genres} onChange={handleGenresChange} />
         </main>
       </aside>
     </Styled>
