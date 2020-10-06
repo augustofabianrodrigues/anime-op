@@ -6,7 +6,7 @@ interface AnimeSearchResultModel {
   averageRating?: number;
   subtype?: AnimeSubtypeEnum;
   episodeCount?: number;
-  posterImage: {
+  posterImage?: {
     original: string;
   };
 }
