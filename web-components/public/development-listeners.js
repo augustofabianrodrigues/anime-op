@@ -1,8 +1,8 @@
 (function () {
   const element = document.querySelector('anime-op-app');
 
-  element.addEventListener('search', ({ detail }) => {
-    console.log(detail);
+  element.addEventListener('search', (e) => {
+    console.log(e.detail);
     element.searchResults = {
       ...element.searchResults,
       loading: true,
@@ -21,7 +21,8 @@
     }, 500);
   });
 
-  element.addEventListener('loadmore', () => {
+  element.addEventListener('loadmore', (e) => {
+    console.log(e);
     element.searchResults = {
       ...element.searchResults,
       loading: true,

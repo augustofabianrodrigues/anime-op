@@ -11,6 +11,7 @@ import ViewTypeToggle from './ViewTypeToggle';
 import SearchStore from '../../../stores/SearchStore';
 import InfiniteScroll from 'react-infinite-scroller';
 import AppContext from '../../AppContext';
+import LoadMoreEvent from '../../../events/LoadMoreEvent';
 
 const SearchResults: FC = () => {
   const appElement = useContext(AppContext);
@@ -26,7 +27,7 @@ const SearchResults: FC = () => {
       return once(
         () => {
           if (loading || !hasMore) return;
-          dispatch(new Event('loadmore'));
+          dispatch(new LoadMoreEvent());
         }
       );
     });
