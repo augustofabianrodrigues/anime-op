@@ -14,7 +14,7 @@ const SearchInput: FC<SearchInputProps> = ({ value, onChange }) => {
         <input
           type="text"
           name="query"
-          placeholder="Type to search..."
+          placeholder="Search for any anime here"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />

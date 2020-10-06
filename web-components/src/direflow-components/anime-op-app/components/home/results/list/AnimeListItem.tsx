@@ -1,18 +1,19 @@
 import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import ShowType from '../../../shared/ShowType';
+import AnimeSearchResultModel from '../../../../models/AnimeSearchResultModel';
+import Subtype from '../../../shared/Subtype';
 import styles from './AnimeListItem.less';
 
-const AnimeListItem: FC = () => {
+interface AnimeListItemProps extends AnimeSearchResultModel {}
+
+const AnimeListItem: FC<AnimeListItemProps> = (props) => {
   return (
     <Styled styles={styles}>
       <li className="anime-list-item">
         <Link to="/details/1">
-          <p className="title">
-            Nanatsu no Taizai: Imashime no Fukkatsu
-          </p>
-          <ShowType />
+          <p className="title">{props.canonicalTitle}</p>
+          {props.subtype && <Subtype value={props.subtype} />}
         </Link>
       </li>
     </Styled>

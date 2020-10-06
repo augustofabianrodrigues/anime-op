@@ -1,26 +1,33 @@
 import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import ShowType from '../../../shared/ShowType';
+import AnimeSearchResultModel from '../../../../models/AnimeSearchResultModel';
+import Subtype from '../../../shared/Subtype';
 import StarsRating from '../../../shared/StarsRating';
 import styles from './AnimeCard.less';
 
-const AnimeCard: FC = () => {
+interface AnimeCardProps extends AnimeSearchResultModel {}
+
+const AnimeCard: FC<AnimeCardProps> = (props) => {
   return (
     <Styled styles={styles}>
       <Link to="/details/1" className="anime-card">
         <div className="cover">
           <img
-            alt="Nanatsu no Taizai Cover"
-            src="https://media.kitsu.io/anime/poster_images/8699/original.jpg?1597699053"
+            alt={`${props.canonicalTitle} Cover`}
+            src={props.posterImage.original}
           />
-          <ShowType />
+          {props.subtype && <Subtype value={props.subtype} />}
         </div>
 
-        <p className="title">Nanatsu no Taizai</p>
+        <p className="title">{props.canonicalTitle}</p>
         <div className="info">
-          <span className="episodes-counter">24 episodes</span>
-          <StarsRating />
+          <span className="episodes-counter">
+            {props.episodeCount && `${props.episodeCount} episodes`}
+          </span>
+          {props.averageRating && (
+            <StarsRating averageRating={props.averageRating} />
+          )}
         </div>
       </Link>
     </Styled>

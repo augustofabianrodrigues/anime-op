@@ -49,6 +49,8 @@ const App: FC<AppProps> = ({ searchResults }) => {
           debouncedDispatch(input);
         }
       },
+
+      // Triggers the search reaction on mount
       { runNow: true }
     );
   }, [dispatch]);

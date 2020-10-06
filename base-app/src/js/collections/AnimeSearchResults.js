@@ -4,7 +4,7 @@ define(['backbone', 'config', 'models/AnimeSearchItem'], function (
   AnimeSearchItem
 ) {
   var fields = {
-    anime: ['canonicalTitle', 'averageRating', 'subtype', 'posterImage'],
+    anime: ['canonicalTitle', 'averageRating', 'subtype', 'posterImage', 'episodeCount'],
   };
 
   var AnimeSearchResults = Backbone.Collection.extend({

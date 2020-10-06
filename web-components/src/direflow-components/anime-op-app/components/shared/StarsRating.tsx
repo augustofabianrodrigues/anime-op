@@ -5,6 +5,10 @@ import styles from './StarsRating.less';
 
 const STARS_COUNT = 5;
 
+interface StarsRatingProps {
+  averageRating: number;
+}
+
 function renderStars(rating: number) {
   let remaining = rating;
   return Array(STARS_COUNT)
@@ -17,9 +21,8 @@ function renderStars(rating: number) {
     });
 }
 
-const StarsRating: FC = () => {
-  // TODO: Replace `Math.random()` for a prop that represents the average rating
-  const rating = Math.random() * STARS_COUNT;
+const StarsRating: FC<StarsRatingProps> = ({ averageRating }) => {
+  const rating = (averageRating / 100) * STARS_COUNT;
   const title = `Rating: ${rating.toFixed(1)} / ${STARS_COUNT.toFixed(1)}`;
 
   return (

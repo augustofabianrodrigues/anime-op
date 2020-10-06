@@ -12,7 +12,6 @@
 import AnimeOPApp from './direflow-components/anime-op-app';
 
 AnimeOPApp.then((element) => {
-
   /**
    * Access DOM node when it's mounted
    */
