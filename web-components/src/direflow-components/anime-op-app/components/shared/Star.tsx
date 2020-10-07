@@ -1,4 +1,5 @@
 import React, { FC, Fragment } from 'react';
+import generateId from '../../utils/generateId';
 
 interface StarProps {
   fillRatio: number;
@@ -6,10 +7,6 @@ interface StarProps {
 
 const HEX_COLOR_FILLED = '#F6E05E';
 const HEX_COLOR_EMPTY = '#718096';
-
-function generateId (): string {
-  return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
-}
 
 function renderGradientOffsets(fillRatio: number) {
   if (fillRatio <= 0) {

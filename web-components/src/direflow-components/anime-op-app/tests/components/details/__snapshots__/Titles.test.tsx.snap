@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot has only a "[en] Cowboy Bebop" item 1`] = `
+<section
+  className="synopsis regular-section titles"
+>
+  <h3
+    className="section-title"
+  >
+    Titles
+  </h3>
+  <ul
+    className="titles-list"
+  >
+    <li>
+      <span
+        className="lang"
+      >
+        en
+      </span>
+      Cowboy Bebop
+    </li>
+  </ul>
+</section>
+`;

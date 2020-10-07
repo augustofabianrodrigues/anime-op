@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot fill ratio of 0 1`] = `
+<svg
+  fill="none"
+  height="21"
+  viewBox="0 0 22 21"
+  width="22"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
+    fill="url(#s_undefined)"
+  />
+  <defs>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="s_undefined"
+      x1="2.04694"
+      x2="18.7136"
+      y1="10.4924"
+      y2="10.4924"
+    >
+      <stop
+        offset="1"
+        stopColor="#718096"
+      />
+    </linearGradient>
+  </defs>
+</svg>
+`;
+
+exports[`matches snapshot fill ratio of 0.11 1`] = `
+<svg
+  fill="none"
+  height="21"
+  viewBox="0 0 22 21"
+  width="22"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
+    fill="url(#s_undefined)"
+  />
+  <defs>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="s_undefined"
+      x1="2.04694"
+      x2="18.7136"
+      y1="10.4924"
+      y2="10.4924"
+    >
+      <stop
+        offset={0.11}
+        stopColor="#F6E05E"
+      />
+      <stop
+        offset={0.1101}
+        stopColor="#718096"
+      />
+    </linearGradient>
+  </defs>
+</svg>
+`;
+
+exports[`matches snapshot fill ratio of 0.68 1`] = `
+<svg
+  fill="none"
+  height="21"
+  viewBox="0 0 22 21"
+  width="22"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
+    fill="url(#s_undefined)"
+  />
+  <defs>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="s_undefined"
+      x1="2.04694"
+      x2="18.7136"
+      y1="10.4924"
+      y2="10.4924"
+    >
+      <stop
+        offset={0.68}
+        stopColor="#F6E05E"
+      />
+      <stop
+        offset={0.6801}
+        stopColor="#718096"
+      />
+    </linearGradient>
+  </defs>
+</svg>
+`;
+
+exports[`matches snapshot fill ratio of 1 1`] = `
+<svg
+  fill="none"
+  height="21"
+  viewBox="0 0 22 21"
+  width="22"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
+    fill="url(#s_undefined)"
+  />
+  <defs>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="s_undefined"
+      x1="2.04694"
+      x2="18.7136"
+      y1="10.4924"
+      y2="10.4924"
+    >
+      <stop
+        offset="1"
+        stopColor="#F6E05E"
+      />
+    </linearGradient>
+  </defs>
+</svg>
+`;
