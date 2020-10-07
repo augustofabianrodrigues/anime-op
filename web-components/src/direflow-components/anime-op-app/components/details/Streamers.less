@@ -1,0 +1,16 @@
+@import '../../less/pallette.less';
+
+.streamer-list {
+  list-style-type: disc;
+  list-style-position: inside;
+
+  li > a {
+    color: lighten(@indigo-lighter, 10%);
+    transition: color 200ms linear;
+    text-decoration: underline;
+
+    &:hover {
+      color: lighten(@indigo-lighter, 20%);
+    }
+  }
+}

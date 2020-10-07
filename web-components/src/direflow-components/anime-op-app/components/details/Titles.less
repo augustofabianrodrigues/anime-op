@@ -1,0 +1,25 @@
+@import '../../less/pallette.less';
+
+.titles-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 1rem;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    column-gap: 1rem;
+
+    .lang {
+      background: @gray-base-light;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      min-width: 5.25rem;
+      text-align: center;
+    }
+  }
+}
