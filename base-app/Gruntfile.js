@@ -68,6 +68,20 @@ module.exports = function (grunt) {
       },
     },
 
+    cssmin: {
+      build: {
+        files: [
+          {
+            expand: true,
+            cwd: 'build/css',
+            src: ['*.css', '!*.min.css'],
+            dest: 'build/css',
+            ext: '.css',
+          },
+        ],
+      },
+    },
+
     uglify: {
       build: {
         files: [
@@ -87,13 +101,13 @@ module.exports = function (grunt) {
     cacheBust: {
       build: {
         options: {
-          assets: ['js/**'],
+          assets: ['js/**', 'css/**'],
           baseDir: './build/',
           deleteOriginals: true,
         },
         cwd: 'build/',
         src: ['index.html', 'js/*'],
-        urlPrefixes: ['js/main.bundle.js', 'js/require.js'],
+        urlPrefixes: ['js/main.bundle.js', 'js/require.js', 'css/styles.css'],
       },
     },
   });
@@ -104,6 +118,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-cache-bust');
 
@@ -113,6 +128,7 @@ module.exports = function (grunt) {
     buildSteps.push('clean:build');
     buildSteps.push('copy:build');
     buildSteps.push('htmlmin:build');
+    buildSteps.push('cssmin:build');
     buildSteps.push('uglify:build');
     buildSteps.push('cacheBust:build');
   }
