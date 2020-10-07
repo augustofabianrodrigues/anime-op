@@ -12,8 +12,10 @@ import SearchStoreReactions from './stores/SearchStoreReactions';
 import SetNavigationBarHeightCSSVariable from './utils/SetNavigationBarHeightCSSVariable';
 import LoadGenresEvent from '../events/LoadGenresEvent';
 import GenreStore from '../stores/GenreStore';
+import AnimeDetailStore from '../stores/AnimeDetailStore';
+import ScrollToTop from './utils/ScrollToTop';
 
-const App: FC<AppProps> = ({ searchResults, genres }) => {
+const App: FC<AppProps> = ({ searchResults, genres, animeDetail }) => {
   const dispatch = useContext(EventContext);
 
   useEffect(() => {
@@ -30,6 +32,10 @@ const App: FC<AppProps> = ({ searchResults, genres }) => {
     GenreStore.update(() => genres);
   }, [genres]);
 
+  useEffect(() => {
+    AnimeDetailStore.update(() => animeDetail);
+  }, [animeDetail]);
+
   const appElement = useRef(null);
   const location = useLocation();
 
@@ -37,6 +43,7 @@ const App: FC<AppProps> = ({ searchResults, genres }) => {
     <AppContext.Provider value={appElement}>
       <Styled styles={styles} scoped={false}>
         <div className="app" ref={appElement}>
+          <ScrollToTop />
           <SetNavigationBarHeightCSSVariable />
           <SearchStoreReactions />
 

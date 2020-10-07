@@ -53,4 +53,16 @@
         });
     }, 500);
   });
+
+  element.addEventListener('loadanimedetail', (e) => {
+    console.log(e);
+
+    setTimeout(() => {
+      fetch('/loadanimedetail_mock.json')
+        .then((res) => res.json())
+        .then((results) => {
+          element.animeDetail = results;
+        });
+    }, 500);
+  });
 })();

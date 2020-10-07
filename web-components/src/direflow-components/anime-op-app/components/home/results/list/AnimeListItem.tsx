@@ -11,7 +11,7 @@ const AnimeListItem: FC<AnimeListItemProps> = (props) => {
   return (
     <Styled styles={styles}>
       <li className="anime-list-item">
-        <Link to="/details/1">
+        <Link to={`/details/${props.id}`}>
           <p className="title">{props.canonicalTitle}</p>
           {props.subtype && <Subtype value={props.subtype} />}
         </Link>

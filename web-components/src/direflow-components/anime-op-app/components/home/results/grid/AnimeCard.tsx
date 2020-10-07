@@ -13,7 +13,7 @@ const AnimeCard: FC<AnimeCardProps> = (props) => {
 
   return (
     <Styled styles={styles}>
-      <Link to="/details/1" className="anime-card">
+      <Link to={`/details/${props.id}`} className="anime-card">
         <div className="cover">
           {props.posterImage && (
             <img

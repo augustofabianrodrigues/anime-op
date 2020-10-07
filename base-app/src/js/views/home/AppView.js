@@ -36,8 +36,70 @@ define([
       });
     },
 
-    _setAnimeDetails: function (anime) {
-      console.log(anime);
+    _mapAnimeDetail: function (model) {
+      var attributes = model.attributes;
+
+      return {
+        id: attributes.id,
+        ageRating: attributes.ageRating,
+        ageRatingGuide: attributes.ageRatingGuide,
+        averageRating: parseFloat(attributes.averageRating) || undefined,
+        canonicalTitle: attributes.canonicalTitle,
+        episodeCount: parseInt(attributes.episodeCount) || undefined,
+        subtype: attributes.subtype,
+        synopsis: attributes.synopsis,
+        titles: attributes.titles,
+        youtubeVideoId: attributes.youtubeVideoId,
+
+        categories: (
+          (attributes.categories && attributes.categories.models) ||
+          []
+        ).map(function (category) {
+          return {
+            slug: category.attributes.slug,
+            title: category.attributes.title,
+          };
+        }),
+
+        characters: (
+          (attributes.characters && attributes.characters.models) ||
+          []
+        ).map(function (character) {
+          return { id: character.attributes.id };
+        }),
+
+        genres: (
+          (attributes.genres.models && attributes.genres.models) ||
+          []
+        ).map(function (genre) {
+          return {
+            slug: genre.attributes.slug,
+            name: genre.attributes.name,
+          };
+        }),
+
+        streamers: (
+          (attributes.streamingLinks && attributes.streamingLinks.models) ||
+          []
+        )
+          .map(function (streamingLink) {
+            return {
+              id: streamingLink.attributes.id,
+              url: streamingLink.attributes.url,
+              siteName:
+                streamingLink.attributes.streamer &&
+                streamingLink.attributes.streamer.attributes.siteName,
+            };
+          })
+          .filter(function (streamer) {
+            return streamer.siteName && streamer.url;
+          }),
+      };
+    },
+
+    _setAnimeDetail: function (anime) {
+      var mappedAnimeDetail = this._mapAnimeDetail(anime);
+      this._animeOpApp.animeDetail = mappedAnimeDetail;
     },
 
     initialize: function () {
@@ -86,18 +148,18 @@ define([
         self._genres.load();
       });
 
-      animeOpApp.on('loadanimedetails', function (event) {
+      animeOpApp.on('loadanimedetail', function (event) {
         var id = event.detail;
         var cached = self._animeDetailCache.get(id);
         if (cached) {
-          return self._setAnimeDetails(cached);
+          return self._setAnimeDetail(cached);
         }
 
         var anime = new AnimeDetail({ id: id });
 
         anime.once('sync', function () {
           self._animeDetailCache.add(anime);
-          self._setAnimeDetails(anime);
+          self._setAnimeDetail(anime);
         });
 
         anime.load();

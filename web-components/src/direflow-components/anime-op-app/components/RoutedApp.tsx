@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { empty } from '../models/Optional';
 import App from './App';
 import AppProps from './AppProps';
 
@@ -12,12 +13,13 @@ const RoutedApp: FC<AppProps> = (props) => {
 };
 
 RoutedApp.defaultProps = {
+  animeDetail: empty(),
   searchResults: {
     hasMore: false,
     loading: false,
     items: [],
   },
-  genres: []
+  genres: [],
 };
 
 export default RoutedApp;

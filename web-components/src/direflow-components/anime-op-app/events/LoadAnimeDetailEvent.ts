@@ -1,4 +1,4 @@
-const EVENT_NAME = 'loadanimedetails';
+const EVENT_NAME = 'loadanimedetail';
 
 class LoadAnimeDetailsEvent extends CustomEvent<string> {
   constructor(animeId: string) {
