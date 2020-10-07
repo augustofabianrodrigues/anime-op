@@ -7,10 +7,11 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "run-s serve",
     "build": "run-s build:web-components build:base-app dist",
     "build:base-app": "yarn --cwd \"base-app\" build",
     "build:web-components": "yarn --cwd \"web-components\" build",
-    "dist": "copyfiles -u 2 base-app/public/**/* dist",
+    "dist": "copyfiles -u 2 base-app/build/**/* dist",
     "postinstall": "run-s install:**",
     "install:base-app": "yarn --cwd \"base-app\" install",
     "install:web-components": "yarn --cwd \"web-components\" install",
