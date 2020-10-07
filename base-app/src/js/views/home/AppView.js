@@ -3,9 +3,20 @@ define([
   'underscore',
   'backbone',
   'collections/AnimeSearchResults',
+  'collections/AnimeDetailCache',
   'collections/Genres',
+  'models/AnimeDetail',
   'tpl!templates/home/app-template.tpl',
-], function ($, _, Backbone, AnimeSearchResults, Genres, appTemplate) {
+], function (
+  $,
+  _,
+  Backbone,
+  AnimeSearchResults,
+  AnimeDetailCache,
+  Genres,
+  AnimeDetail,
+  appTemplate
+) {
   var AppView = Backbone.View.extend({
     el: $('#router-view'),
 
@@ -25,8 +36,13 @@ define([
       });
     },
 
+    _setAnimeDetails: function (anime) {
+      console.log(anime);
+    },
+
     initialize: function () {
       this._animeSearchResults = new AnimeSearchResults();
+      this._animeDetailCache = new AnimeDetailCache();
       this._genres = new Genres();
       this._animeOpApp = null;
 
@@ -58,14 +74,33 @@ define([
       this._animeOpApp = animeOpApp[0];
 
       var self = this;
+
       animeOpApp.on('search', function (event) {
         self._animeSearchResults.query(event.detail);
       });
       animeOpApp.on('loadmore', function () {
         self._animeSearchResults.next();
       });
+
       animeOpApp.on('loadgenres', function () {
         self._genres.load();
+      });
+
+      animeOpApp.on('loadanimedetails', function (event) {
+        var id = event.detail;
+        var cached = self._animeDetailCache.get(id);
+        if (cached) {
+          return self._setAnimeDetails(cached);
+        }
+
+        var anime = new AnimeDetail({ id: id });
+
+        anime.once('sync', function () {
+          self._animeDetailCache.add(anime);
+          self._setAnimeDetails(anime);
+        });
+
+        anime.load();
       });
     },
   });

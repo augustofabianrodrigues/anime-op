@@ -5,5 +5,7 @@ define(['backbone'], function (Backbone) {
     },
   });
 
+  Backbone.modelFactory.registerModel(Genre);
+
   return Genre;
 });

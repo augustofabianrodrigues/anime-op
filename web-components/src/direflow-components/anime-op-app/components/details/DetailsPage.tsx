@@ -1,13 +1,29 @@
-import React, { FC } from 'react';
-import { Styled } from 'direflow-component';
+import React, { FC, useContext, useEffect } from 'react';
+import { EventContext, Styled } from 'direflow-component';
 import ReactPlayer from 'react-player';
 import styles from './DetailsPage.less';
 import DetailsPageHeader from './DetailsPageHeader';
 import StarsRating from '../shared/StarsRating';
 import Subtype from '../shared/Subtype';
 import AnimeSubtypeEnum from '../../models/AnimeSubtypeEnum';
+import { useRouteMatch } from 'react-router-dom';
+import LoadAnimeDetailsEvent from '../../events/LoadAnimeDetailsEvent';
 
 const DetailsPage: FC = () => {
+  const dispatch = useContext(EventContext);
+  const match = useRouteMatch<{ animeId: string }>({
+    path: '/details/:animeId',
+    exact: true,
+  });
+
+  const animeId = match?.params.animeId;
+
+  useEffect(() => {
+    if (animeId) {
+      dispatch(new LoadAnimeDetailsEvent(animeId));
+    }
+  }, [dispatch, animeId]);
+
   return (
     <Styled styles={styles}>
       <div className="details-page">
