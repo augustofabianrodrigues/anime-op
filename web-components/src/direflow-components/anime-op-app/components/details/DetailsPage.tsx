@@ -23,7 +23,7 @@ const DetailsPage: FC = () => {
   const animeId = match?.params.animeId;
 
   useEffect(() => {
-    AnimeDetailStore.update(empty);
+    AnimeDetailStore.replace(empty());
 
     if (animeId) {
       dispatch(new LoadAnimeDetailsEvent(animeId));
