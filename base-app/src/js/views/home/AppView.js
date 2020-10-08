@@ -78,6 +78,7 @@ define([
             return {
               id: character.attributes.id,
               canonicalName: character.attributes.canonicalName,
+              names: character.attributes.names,
               description: character.attributes.description,
               image: character.attributes.image,
               otherNames: character.attributes.otherNames,

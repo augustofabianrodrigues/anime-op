@@ -7,6 +7,7 @@ import SearchStore from '../../../../stores/SearchStore';
 import AgeRatingEnum from '../../../../models/AgeRatingEnum';
 import Genre from './Genre';
 import GenreModel from '../../../../models/GenreModel';
+import XIcon from '../../../shared/XIcon';
 
 interface FiltersDrawerProps {
   onClose: () => void;
@@ -35,29 +36,8 @@ const FiltersDrawer: FC<FiltersDrawerProps> = ({ onClose }) => {
             <FiltersIcon />
             Filters
           </h2>
-          <button tabIndex={1} onClick={onClose}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18 6L6 18"
-                stroke="#FBFDFE"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M6 6L18 18"
-                stroke="#FBFDFE"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <button onClick={onClose}>
+            <XIcon />
           </button>
         </header>
 

@@ -1,6 +1,5 @@
-import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
-import styles from './Titles.less';
+import LanguageDictionaryList from '../shared/LanguageDictionaryList';
 import RegularSection from './RegularSection';
 
 interface TitlesProps {
@@ -11,18 +10,9 @@ interface TitlesProps {
 
 const Titles: FC<TitlesProps> = ({ titles }) => {
   return (
-    <Styled styles={styles}>
-      <RegularSection title="Titles" className="titles">
-        <ul className="titles-list">
-          {Object.keys(titles).map((lang) => (
-            <li key={lang}>
-              <span className="lang">{lang}</span>
-              {titles[lang]}
-            </li>
-          ))}
-        </ul>
-      </RegularSection>
-    </Styled>
+    <RegularSection title="Titles" className="titles">
+      <LanguageDictionaryList values={titles} />
+    </RegularSection>
   );
 };
 

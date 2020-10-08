@@ -1,3 +1,8 @@
+@import '../../less/accessibility.less';
+
+@image-width: 8rem;
+@image-height: 12rem;
+
 .character-gallery {
   display: flex;
   flex-direction: column;
@@ -7,11 +12,21 @@
   height: 12rem;
   width: 100%;
 
+  li,
+  li > button {
+    width: @image-width;
+    height: @image-height;
+  }
+
   img {
-    height: 12rem;
-    width: 8rem;
+    width: @image-width;
+    height: @image-height;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  figcaption {
+    .sr-only();
   }
 }
