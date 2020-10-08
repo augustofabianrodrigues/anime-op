@@ -15,7 +15,7 @@ const RegularSection: FC<RegularSectionProps> = ({
 }) => {
   return (
     <Styled styles={styles}>
-      <section className={classNames('synopsis regular-section', className)}>
+      <section className={classNames('regular-section', className)}>
         <h3 className="section-title">{title}</h3>
         {children}
       </section>

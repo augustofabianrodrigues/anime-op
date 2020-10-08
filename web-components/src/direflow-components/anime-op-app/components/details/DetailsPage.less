@@ -20,18 +20,18 @@
     margin: 0 auto;
 
     @media screen and (min-width: 1024px) {
+      position: relative;
       display: grid;
       padding: 1rem;
       align-items: flex-start;
       justify-content: flex-start;
       grid-template-areas:
-        'player main-info'
-        'player age-rating'
-        'synopsis synopsis'
-        'genres categories'
-        'titles streamers';
-      grid-template-columns: 36rem 1fr;
-      grid-template-rows: auto 1fr;
+        'player main-info main-info'
+        'player age-rating age-rating'
+        'synopsis synopsis characters'
+        'genres categories characters'
+        'titles streamers characters';
+      grid-template-columns: 36rem 1fr 16rem;
       column-gap: 1rem;
       row-gap: 1rem;
 
@@ -70,6 +70,20 @@
 
       .streamers {
         grid-area: streamers;
+      }
+
+      .characters {
+        grid-area: characters;
+        position: absolute;
+        height: 100%;
+
+        .character-gallery {
+          overflow-x: hidden;
+          overflow-y: scroll;
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     }
   }

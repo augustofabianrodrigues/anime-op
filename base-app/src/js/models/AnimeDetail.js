@@ -2,10 +2,10 @@ define([
   'backbone',
   'config',
   'models/Category',
-  'models/Character',
+  'models/MediaCharacter',
   'models/Genre',
   'models/StreamingLink',
-], function (Backbone, config, Category, Character, Genre, StreamingLink) {
+], function (Backbone, config, Category, MediaCharacter, Genre, StreamingLink) {
   var fields = {
     anime: [
       'synopsis',
@@ -26,7 +26,17 @@ define([
     ],
 
     categories: ['title', 'slug'],
-    characters: ['canonicalName', 'image'],
+
+    mediaCharacters: ['character'],
+
+    characters: [
+      'names',
+      'canonicalName',
+      'otherNames',
+      'description',
+      'image',
+    ],
+
     genres: ['name', 'slug'],
     streamingLinks: ['url', 'subs', 'dubs', 'streamer'],
   };
@@ -55,7 +65,7 @@ define([
       {
         type: Backbone.HasMany,
         key: 'characters',
-        relatedModel: Character,
+        relatedModel: MediaCharacter,
       },
 
       {
@@ -77,6 +87,7 @@ define([
           include: include.join(','),
           'fields[anime]': fields.anime.join(','),
           'fields[categories]': fields.categories.join(','),
+          'fields[mediaCharacters]': fields.mediaCharacters.join(','),
           'fields[characters]': fields.characters.join(','),
           'fields[genres]': fields.genres.join(','),
           'fields[streamingLinks]': fields.streamingLinks.join(','),

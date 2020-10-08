@@ -12,6 +12,7 @@ import MainInfo from './MainInfo';
 import RegularSection from './RegularSection';
 import Titles from './Titles';
 import Streamers from './Streamers';
+import CharacterGallery from './CharacterGallery';
 
 const DetailsPage: FC = () => {
   const dispatch = useContext(EventContext);
@@ -75,6 +76,8 @@ const DetailsPage: FC = () => {
 
           <Titles titles={animeDetail.titles} />
           <Streamers streamers={animeDetail.streamers} />
+
+          <CharacterGallery characters={animeDetail.characters} />
         </main>
       </div>
     </Styled>

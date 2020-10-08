@@ -64,9 +64,25 @@ define([
         characters: (
           (attributes.characters && attributes.characters.models) ||
           []
-        ).map(function (character) {
-          return { id: character.attributes.id };
-        }),
+        )
+          .filter(function (mediaCharacter) {
+            return (
+              mediaCharacter.attributes.character &&
+              mediaCharacter.attributes.character.attributes.image &&
+              mediaCharacter.attributes.character.attributes.image.original
+            );
+          })
+          .map(function (mediaCharacter) {
+            var character = mediaCharacter.attributes.character;
+
+            return {
+              id: character.attributes.id,
+              canonicalName: character.attributes.canonicalName,
+              description: character.attributes.description,
+              image: character.attributes.image,
+              otherNames: character.attributes.otherNames,
+            };
+          }),
 
         genres: (
           (attributes.genres.models && attributes.genres.models) ||
