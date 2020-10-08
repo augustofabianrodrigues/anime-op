@@ -10,6 +10,7 @@
   z-index: 16;
   padding: 2rem;
   overflow: hidden;
+  will-change: opacity;
 
   .character-modal {
     display: flex;
@@ -25,6 +26,7 @@
     overflow-x: hidden;
     overflow-y: visible;
     border-radius: 0.25rem;
+    will-change: transform;
 
     .character-modal-header {
       position: sticky;
@@ -96,6 +98,35 @@
           padding: 0;
         }
       }
+    }
+  }
+
+  &.character-modal-enter {
+    opacity: 0;
+
+    .character-modal {
+      transform: scale(0.9);
+    }
+  }
+  &.character-modal-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+
+    .character-modal {
+      transform: translateX(0);
+      transition: transform 300ms;
+    }
+  }
+  &.character-modal-exit {
+    opacity: 1;
+  }
+  &.character-modal-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+
+    .character-modal {
+      transform: scale(0.9);
+      transition: transform 300ms;
     }
   }
 }

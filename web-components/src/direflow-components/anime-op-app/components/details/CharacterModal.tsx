@@ -10,7 +10,7 @@ import styles from './CharacterModal.less';
 import RegularSection from './RegularSection';
 
 interface CharacterModalProps {
-  character: CharacterModel;
+  character?: CharacterModel;
   onClose: () => void;
 }
 
@@ -28,6 +28,7 @@ const renderCharacterOtherNames = (character: CharacterModel) =>
 const CharacterModal: FC<CharacterModalProps> = ({ character, onClose }) => {
   const appElement = useContext(AppContext);
   if (!appElement.current) return null;
+  if (!character) return null;
 
   return createPortal(
     <Styled styles={styles}>
