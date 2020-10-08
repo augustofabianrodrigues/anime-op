@@ -2,7 +2,7 @@
 
 exports[`snapshot has only a "[en] Cowboy Bebop" item 1`] = `
 <section
-  className="synopsis regular-section titles"
+  className="regular-section titles"
 >
   <h3
     className="section-title"
@@ -10,7 +10,7 @@ exports[`snapshot has only a "[en] Cowboy Bebop" item 1`] = `
     Titles
   </h3>
   <ul
-    className="titles-list"
+    className="language-dictionary-list"
   >
     <li>
       <span

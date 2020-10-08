@@ -25,24 +25,6 @@ it('works without titles', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it('displays titles that are passed', () => {
-  const titles: { [lang: string]: string } = {
-    en: 'Cowboy Bebop',
-    en_jp: 'Cowboy Bebop',
-    ja_jp: 'カウボーイビバップ',
-  };
-
-  const wrapper = shallow(<Titles titles={titles} />);
-
-  for (const lang in titles) {
-    const node = wrapper.findWhere((el) => el.key() === lang);
-    expect(node).toExist();
-
-    expect(node).toIncludeText(lang);
-    expect(node).toIncludeText(titles[lang]);
-  }
-});
-
 it('snapshot has only a "[en] Cowboy Bebop" item', () => {
   const renderTree = renderer
     .create(<Titles titles={{ en: 'Cowboy Bebop' }} />)

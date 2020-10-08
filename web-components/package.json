@@ -28,7 +28,8 @@
   "scripts": {
     "start": "direflow-scripts start",
     "build": "direflow-scripts build",
-    "test": "direflow-scripts test"
+    "test": "direflow-scripts test",
+    "test:update": "direflow-scripts test -u"
   },
   "dependencies": {
     "@types/classnames": "^2.2.10",
