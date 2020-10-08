@@ -42,12 +42,14 @@ function renderGrid(items: AnimeSearchResultModel[], columnCount: number) {
 }
 
 const SearchResultsGrid: FC = () => {
-  const { items } = SearchStore.useState((s) => s.results);
+  const { items, loading } = SearchStore.useState((s) => s.results);
   const resultsGridElement = useRef<HTMLDivElement>(null);
   const [width] = useElementSize(resultsGridElement.current);
   const columnCount = getColumnCount(width);
 
   const gridTemplateColumns = `repeat(${columnCount}, 18rem)`;
+
+  // TODO: Replace loading message for skeleton loader
 
   return (
     <Styled styles={styles}>
@@ -56,6 +58,7 @@ const SearchResultsGrid: FC = () => {
         className="search-results-grid"
         style={{ gridTemplateColumns }}
       >
+        {loading && items.length === 0 && <p>Loading...</p>}
         {width && renderGrid(items, columnCount)}
       </div>
     </Styled>
