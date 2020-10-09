@@ -1,3 +1,4 @@
+import AnimeImageModel from './AnimeImageModel';
 import AnimeSubtypeEnum from './AnimeSubtypeEnum';
 
 interface AnimeSearchResultModel {
@@ -6,9 +7,7 @@ interface AnimeSearchResultModel {
   averageRating?: number;
   subtype?: AnimeSubtypeEnum;
   episodeCount?: number;
-  posterImage?: {
-    original: string;
-  };
+  posterImage?: AnimeImageModel;
 }
 
 export default AnimeSearchResultModel;

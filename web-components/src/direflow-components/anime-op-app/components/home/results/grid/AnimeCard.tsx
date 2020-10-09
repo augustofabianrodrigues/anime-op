@@ -5,6 +5,7 @@ import AnimeSearchResultModel from '../../../../models/AnimeSearchResultModel';
 import Subtype from '../../../shared/Subtype';
 import StarsRating from '../../../shared/StarsRating';
 import styles from './AnimeCard.less';
+import AnimePosterImage from './AnimePosterImage';
 
 interface AnimeCardProps extends AnimeSearchResultModel {}
 
@@ -15,12 +16,10 @@ const AnimeCard: FC<AnimeCardProps> = (props) => {
     <Styled styles={styles}>
       <Link to={`/details/${props.id}`} className="anime-card">
         <div className="cover">
-          {props.posterImage && (
-            <img
-              alt={`${props.canonicalTitle} Cover`}
-              src={props.posterImage.original}
-            />
-          )}
+          <AnimePosterImage
+            canonicalTitle={props.canonicalTitle}
+            posterImage={props.posterImage}
+          />
           {props.subtype && <Subtype value={props.subtype} />}
         </div>
 
