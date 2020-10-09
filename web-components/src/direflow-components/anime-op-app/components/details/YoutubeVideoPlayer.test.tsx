@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import YoutubeVideoPlayer from '../../../components/details/YoutubeVideoPlayer';
 import ReactPlayer from 'react-player';
+import YoutubeVideoPlayer from './YoutubeVideoPlayer';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

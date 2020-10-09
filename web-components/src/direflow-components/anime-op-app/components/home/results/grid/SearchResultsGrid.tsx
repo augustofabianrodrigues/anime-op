@@ -1,27 +1,15 @@
 import { Styled } from 'direflow-component';
-import React, { FC, useLayoutEffect, useRef, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import chunk from 'lodash/chunk';
 import zip from 'lodash/zip';
 import SearchStore from '../../../../stores/SearchStore';
 import AnimeCard from './AnimeCard';
 import styles from './SearchResultsGrid.less';
 import AnimeSearchResultModel from '../../../../models/AnimeSearchResultModel';
+import useElementSize from '../../../../hooks/useElementSize';
 
 const CARD_WIDTH_IN_PIXELS = 288; // 18rem
 const COLUMN_GAP_IN_PIXELS = 16; // 1rem
-
-function useElementSize(element: HTMLElement | null) {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([element?.offsetWidth || 0, element?.offsetHeight || 0]);
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, [element]);
-  return size;
-}
 
 function getColumnCount(elementWidth: number) {
   return Math.max(

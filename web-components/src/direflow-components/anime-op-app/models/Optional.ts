@@ -1,4 +1,4 @@
-type Optional<T> = T | undefined;
+type Optional<T> = T | null | undefined;
 export default Optional;
 
 export function empty<T>(): Optional<T> {

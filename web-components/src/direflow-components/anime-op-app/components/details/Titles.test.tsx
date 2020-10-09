@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import Titles from '../../../components/details/Titles';
+import Titles from './Titles';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

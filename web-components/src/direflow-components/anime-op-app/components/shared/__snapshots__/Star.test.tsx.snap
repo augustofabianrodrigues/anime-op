@@ -10,12 +10,12 @@ exports[`matches snapshot fill ratio of 0 1`] = `
 >
   <path
     d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
-    fill="url(#s_undefined)"
+    fill="url(#s_1)"
   />
   <defs>
     <linearGradient
       gradientUnits="userSpaceOnUse"
-      id="s_undefined"
+      id="s_1"
       x1="2.04694"
       x2="18.7136"
       y1="10.4924"
@@ -40,12 +40,12 @@ exports[`matches snapshot fill ratio of 0.11 1`] = `
 >
   <path
     d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
-    fill="url(#s_undefined)"
+    fill="url(#s_1)"
   />
   <defs>
     <linearGradient
       gradientUnits="userSpaceOnUse"
-      id="s_undefined"
+      id="s_1"
       x1="2.04694"
       x2="18.7136"
       y1="10.4924"
@@ -74,12 +74,12 @@ exports[`matches snapshot fill ratio of 0.68 1`] = `
 >
   <path
     d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
-    fill="url(#s_undefined)"
+    fill="url(#s_1)"
   />
   <defs>
     <linearGradient
       gradientUnits="userSpaceOnUse"
-      id="s_undefined"
+      id="s_1"
       x1="2.04694"
       x2="18.7136"
       y1="10.4924"
@@ -108,12 +108,12 @@ exports[`matches snapshot fill ratio of 1 1`] = `
 >
   <path
     d="M10.3803 2.15903L12.9553 7.37569L18.7136 8.21736L14.5469 12.2757L15.5303 18.009L10.3803 15.3007L5.23027 18.009L6.21361 12.2757L2.04694 8.21736L7.80527 7.37569L10.3803 2.15903Z"
-    fill="url(#s_undefined)"
+    fill="url(#s_1)"
   />
   <defs>
     <linearGradient
       gradientUnits="userSpaceOnUse"
-      id="s_undefined"
+      id="s_1"
       x1="2.04694"
       x2="18.7136"
       y1="10.4924"

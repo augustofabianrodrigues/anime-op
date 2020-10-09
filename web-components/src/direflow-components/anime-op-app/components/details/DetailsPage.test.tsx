@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
-import { shallow } from 'enzyme';
-import DetailsPage from '../../../components/details/DetailsPage';
-import LoadAnimeDetailsEvent from '../../../events/LoadAnimeDetailEvent';
+import LoadAnimeDetailsEvent from '../../events/LoadAnimeDetailEvent';
+import DetailsPage from './DetailsPage';
 
-jest.mock('../../../events/LoadAnimeDetailEvent');
+jest.mock('../../events/LoadAnimeDetailEvent');
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

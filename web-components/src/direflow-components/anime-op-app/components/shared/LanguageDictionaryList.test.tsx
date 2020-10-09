@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LanguageDictionaryList from '../../../components/shared/LanguageDictionaryList';
+import LanguageDictionaryList from './LanguageDictionaryList';
 
 it('displays the value pairs that are passed', () => {
   const titles: { [lang: string]: string } = {

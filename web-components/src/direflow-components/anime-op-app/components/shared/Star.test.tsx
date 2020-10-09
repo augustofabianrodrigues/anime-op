@@ -1,8 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Star from '../../../components/shared/Star';
-
-jest.mock('../../../utils/generateId');
+import Star from './Star';
 
 it('matches snapshot fill ratio of 0.68', () => {
   const renderTree = renderer.create(<Star fillRatio={0.68} />).toJSON();

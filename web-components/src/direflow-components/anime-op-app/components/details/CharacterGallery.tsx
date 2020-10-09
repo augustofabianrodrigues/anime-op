@@ -2,7 +2,6 @@ import { Styled } from 'direflow-component';
 import React, { FC, useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import CharacterModel from '../../models/CharacterModel';
-import { empty } from '../../models/Optional';
 import styles from './CharacterGallery.less';
 import CharacterModal from './CharacterModal';
 import RegularSection from './RegularSection';
@@ -54,7 +53,7 @@ const CharacterGallery: FC<CharacterGalleryProps> = ({ characters }) => {
           in={showModal}
           timeout={300}
           classNames="character-modal"
-          onExited={() => setSelected(empty())}
+          onExited={() => setSelected(undefined)}
         >
           <CharacterModal
             character={selected}

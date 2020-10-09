@@ -103,7 +103,7 @@
   "jest": {
     "setupFilesAfterEnv": [
       "direflow-scripts/direflow-jest.config.js",
-      "./src/direflow-components/anime-op-app/tests/setupTests.ts"
+      "./src/direflow-components/anime-op-app/setupTests.ts"
     ]
   },
   "config-overrides-path": "direflow-webpack.js"
