@@ -1,5 +1,8 @@
 import { Styled } from 'direflow-component';
 import React, { FC } from 'react';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import MagnifyingGlassIcon from '../../shared/MagnifyingGlassIcon';
+import XIcon from '../../shared/XIcon';
 import styles from './SearchInput.less';
 
 interface SearchInputProps {
@@ -7,7 +10,22 @@ interface SearchInputProps {
   onChange: (value: string) => void;
 }
 
+const renderClearInputButton = (onClick: () => void) => {
+  return (
+    <button
+      type="button"
+      title="Clear"
+      className="search-input-clear"
+      onClick={onClick}
+    >
+      <XIcon />
+    </button>
+  )
+};
+
 const SearchInput: FC<SearchInputProps> = ({ value, onChange }) => {
+  const hasValue = +(value.trim().length !== 0);
+
   return (
     <Styled styles={styles}>
       <div className="search-input">
@@ -18,28 +36,22 @@ const SearchInput: FC<SearchInputProps> = ({ value, onChange }) => {
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-            stroke="#97A6BA"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M21 21L16.65 16.65"
-            stroke="#97A6BA"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+
+        <SwitchTransition mode="out-in">
+          <CSSTransition
+            key={hasValue}
+            classNames="change-search-icon"
+            timeout={200}
+            addEndListener={(node, done) =>
+              node.addEventListener('transitionend', done, false)
+            }
+          >
+            {hasValue
+              ? renderClearInputButton(() => onChange(''))
+              : <MagnifyingGlassIcon />
+            }
+          </CSSTransition>
+        </SwitchTransition>
       </div>
     </Styled>
   );

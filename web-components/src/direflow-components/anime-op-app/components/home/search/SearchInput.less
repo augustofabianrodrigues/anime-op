@@ -1,3 +1,4 @@
+@import '../../../less/accessibility.less';
 @import '../../../less/pallette.less';
 
 .search-input {
@@ -13,12 +14,33 @@
     color: @text-base;
   }
 
-  svg {
+  & > .search-input-clear,
+  & > svg {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
     margin: auto;
+  }
+
+  svg {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  .change-search-icon-enter {
+    transform: rotateY(0.25turn);
+  }
+  .change-search-icon-exit {
+    transform: rotateY(0);
+  }
+  .change-search-icon-enter-active {
+    transition: transform 200ms;
+    transform: rotateY(0);
+    will-change: transform;
+  }
+  .change-search-icon-exit-active {
+    transition: transform 200ms;
+    transform: rotateX(-0.25turn);
+    will-change: transform;
   }
 }
