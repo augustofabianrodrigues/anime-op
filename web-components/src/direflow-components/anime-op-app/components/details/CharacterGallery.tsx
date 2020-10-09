@@ -2,6 +2,7 @@ import { Styled } from 'direflow-component';
 import React, { FC, useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import CharacterModel from '../../models/CharacterModel';
+import LazyAsyncImage from '../shared/LazyAsyncImage';
 import styles from './CharacterGallery.less';
 import CharacterModal from './CharacterModal';
 import RegularSection from './RegularSection';
@@ -22,7 +23,7 @@ function renderGallery(
         <li key={character.id}>
           <button onClick={() => selectCharacter(character)}>
             <figure>
-              <img
+              <LazyAsyncImage
                 alt={character.canonicalName}
                 src={character.image.original}
               />
