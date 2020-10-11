@@ -1,0 +1,24 @@
+@import '../../less/pallette.less';
+
+.character-description {
+  .spoiler {
+    color: transparent;
+    user-select: none;
+
+    &::selection {
+      color: transparent;
+    }
+
+    &::before {
+      content: 'HIDDEN SPOILER';
+      display: inline;
+      padding: 0.25rem 0.5rem;
+      background: #e53e3e;
+      background: linear-gradient(to right, #e53e3e, #f56565);
+      color: @text-base;
+      font-size: 18px;
+      font-weight: 500;
+      border-radius: 0.125rem;
+    }
+  }
+}

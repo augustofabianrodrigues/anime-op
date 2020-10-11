@@ -6,6 +6,7 @@ import AppContext from '../AppContext';
 import LanguageDictionaryList from '../shared/LanguageDictionaryList';
 import XIcon from '../shared/XIcon';
 import Backdrop from '../slide-drawer/Backdrop';
+import CharacterDescription from './CharacterDescription';
 import styles from './CharacterModal.less';
 import RegularSection from './RegularSection';
 
@@ -63,12 +64,7 @@ const CharacterModal: FC<CharacterModalProps> = ({ character, onClose }) => {
               {renderCharacterOtherNames(character)}
             </RegularSection>
 
-            <RegularSection
-              title="Description"
-              className="character-description"
-            >
-              {character.description || 'N/A'}
-            </RegularSection>
+            <CharacterDescription description={character.description} />
           </div>
         </div>
       </div>
