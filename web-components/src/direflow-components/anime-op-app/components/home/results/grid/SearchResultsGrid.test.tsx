@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import SearchStore from '../../../../stores/SearchStore';
 import SearchResultsGrid from './SearchResultsGrid';
+import ViewTypeEnum from '../../../../models/ViewTypeEnum';
 
 beforeEach(() => {
   SearchStore.replace({
     input: { query: '', ageRatings: [], genres: [] },
+    viewType: ViewTypeEnum.Grid,
     results: {
       loading: false,
       hasMore: false,
@@ -21,9 +23,10 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it('displays a loading message when there are no items and they are loading', () => {
+it('displays a skeleton loader when there are no items and they are loading', () => {
   SearchStore.replace({
     input: { query: '', ageRatings: [], genres: [] },
+    viewType: ViewTypeEnum.Grid,
     results: {
       loading: true,
       hasMore: false,
@@ -32,12 +35,13 @@ it('displays a loading message when there are no items and they are loading', ()
   });
 
   const wrapper = shallow(<SearchResultsGrid />);
-  expect(wrapper.find('.search-results-grid > p')).toIncludeText('Loading');
+  expect(wrapper.find('.search-results-grid > .skeleton-loader')).toExist();
 });
 
 it('displays items grid when there are items', () => {
   SearchStore.replace({
     input: { query: '', ageRatings: [], genres: [] },
+    viewType: ViewTypeEnum.Grid,
     results: {
       loading: true,
       hasMore: false,
@@ -51,5 +55,5 @@ it('displays items grid when there are items', () => {
   });
 
   const wrapper = shallow(<SearchResultsGrid />);
-  expect(wrapper.find('.grid-column')).toExist();
+  expect(wrapper.find('.grid-column:not(.skeleton-loader)')).toExist();
 });

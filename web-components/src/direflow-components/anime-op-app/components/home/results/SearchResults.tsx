@@ -6,7 +6,7 @@ import noop from 'lodash/noop';
 import SearchResultsGrid from './grid/SearchResultsGrid';
 import SearchResultsList from './list/SearchResultsList';
 import styles from './SearchResults.less';
-import ViewType from '../../../models/ViewTypeEnum';
+import ViewTypeEnum from '../../../models/ViewTypeEnum';
 import ViewTypeToggle from './ViewTypeToggle';
 import SearchStore from '../../../stores/SearchStore';
 import InfiniteScroll from 'react-infinite-scroller';
@@ -17,19 +17,22 @@ const SearchResults: FC = () => {
   const appElement = useContext(AppContext);
   const dispatch = useContext(EventContext);
 
+  const viewType = SearchStore.useState((state) => state.viewType);
+  const setViewType = (value: ViewTypeEnum) =>
+    SearchStore.update((state) => {
+      state.viewType = value;
+    });
+
   const { hasMore, items, loading } = SearchStore.useState((s) => s.results);
-  const [viewType, setViewType] = useState(ViewType.Grid);
 
   const [loadMore, setLoadMore] = useState<() => void>(() => noop);
 
   useEffect(() => {
     setLoadMore(() => {
-      return once(
-        () => {
-          if (loading || !hasMore) return;
-          dispatch(new LoadMoreEvent());
-        }
-      );
+      return once(() => {
+        if (loading || !hasMore) return;
+        dispatch(new LoadMoreEvent());
+      });
     });
   }, [dispatch, loading, hasMore, items]);
 
@@ -38,7 +41,7 @@ const SearchResults: FC = () => {
       <section className="search-results">
         <ViewTypeToggle
           value={viewType}
-          onChange={(value) => setViewType(() => value)}
+          onChange={setViewType}
         />
 
         <InfiniteScroll
@@ -63,7 +66,7 @@ const SearchResults: FC = () => {
                 node.addEventListener('transitionend', done, false)
               }
             >
-              {viewType === ViewType.Grid ? (
+              {viewType === ViewTypeEnum.Grid ? (
                 <SearchResultsGrid />
               ) : (
                 <SearchResultsList />
