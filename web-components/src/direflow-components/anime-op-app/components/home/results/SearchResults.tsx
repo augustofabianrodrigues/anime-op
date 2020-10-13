@@ -47,7 +47,7 @@ const SearchResults: FC = () => {
           loadMore={loadMore}
           hasMore={hasMore}
           loader={
-            <div className="loader" key={0}>
+            <div className="infinite-scroll-loader" key={0}>
               Loading ...
             </div>
           }

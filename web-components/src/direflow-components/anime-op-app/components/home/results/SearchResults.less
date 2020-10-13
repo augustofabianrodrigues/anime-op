@@ -1,8 +1,14 @@
+@import '../../../less/accessibility.less';
+
 .search-results {
   display: flex;
   position: relative;
   flex-direction: column;
   flex-wrap: nowrap;
+
+  .infinite-scroll-loader {
+    .sr-only();
+  }
 
   .fade-enter {
     opacity: 0;
