@@ -46,8 +46,10 @@
   background: @gray-base-light;
 
   &:nth-child(odd) {
-    & > a {
-      background: @gray-base-lighter;
+    background: @gray-base-lighter;
+
+    .loader-subtype {
+      .loader-animation(@gray-base-light, @gray-base);
     }
   }
 
