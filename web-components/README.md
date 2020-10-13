@@ -12,11 +12,10 @@ With [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/) installe
 
 ```bash
 yarn
+# npm install
 ```
 
 > **Note**: it is recommended to use [Yarn](https://yarnpkg.com/) for this project because of the lock file `(yarn.lock)`.
->
-> If you still wanna stick with npm [here's a guide for you](https://classic.yarnpkg.com/en/docs/migrating-from-npm/) 😉
 
 ## Starting
 
@@ -24,6 +23,7 @@ To start the project for development _(hot reloading included)_, run:
 
 ```bash
 yarn start
+# npm start
 ```
 
 ## Building
@@ -32,10 +32,12 @@ The following command will build this project into an AMD bundle and can be foun
 
 ```bash
 yarn build
+# npm run build
 ```
 
 ## Running Tests
 
 ```bash
 yarn test
+# npm test
 ```

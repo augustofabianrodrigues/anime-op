@@ -1,6 +1,7 @@
 # アニメ OP
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8baeaa59-bd4a-4249-b25a-2f4bcaa2bf14/deploy-status)](https://app.netlify.com/sites/anime-op/deploys)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com/)
 
 Simple web app for anime _(アニメ)_ searching.
 
@@ -16,21 +17,49 @@ This project requires that [Node.js](https://nodejs.org/en/) is installed.
 
 Dependencies installation:
 
-```shell
-npm install
+```bash
+yarn
+# npm install
 ```
+
+> **Note**: it is recommended to use [Yarn](https://yarnpkg.com/) for this project because of the lock file `(yarn.lock)`.
+
+This will install all root dependencies and the dependencies for both _base-app_ and _web-components_.
 
 ## Starting
 
-TBD
+```bash
+yarn start
+# npm start
+
+# Aliases:
+# yarn serve
+# npm run serve
+```
+
+Any of the above commands build the _web-components_ project and start a development server for the _base-app_ @**localhost:8080**.
+
+Once you save a file at the _base-app_ folder, Grunt will lint and generate a development require.js bundle. You will need to refresh the browser for changes to be loaded.
+
+> **Note**: it is recommend to develop the _web-components_ project individually first. Please check out [_web-components_ README file](./web-components/README.md#starting).
 
 ## Building
 
-TBD
+```bash
+yarn build
+# npm run build
+```
+
+This will generate a production ready build of both _web-components_ and _base-app_, respectively. The final build can be found at _base-app/build_ or _dist_ at the root.
 
 ## Running Tests
 
-TBD
+```bash
+yarn test
+# npm test
+```
+
+This will run the tests for _web-components_. No tests are implemented for _base-app_ as of now.
 
 ## Overview
 
@@ -42,8 +71,15 @@ A complete explanation about the architecture can be found at [docs/architecture
 
 ## Directory Structure
 
-```text
+```bash
+├── dist (root build folder)
 ├── base-app
+│   ├── build
+│   │   ├── index.html
+│   │   └── (other files...)
+│   ├── src
+│   │   └── (code...)
+│   └── README.md
 ├── docs
 │   ├── illustrations
 │   ├── architecture.md
