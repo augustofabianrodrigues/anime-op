@@ -1,11 +1,14 @@
 import { EventContext } from 'direflow-component';
-import { FC, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import debounce from 'lodash/debounce';
-import SearchInputModel from '../../models/SearchInputModel';
-import SearchStore from '../../stores/SearchStore';
-import SearchEvent from '../../events/SearchEvent';
+import SearchInputModel from '../models/SearchInputModel';
+import SearchStore from '../stores/SearchStore';
+import SearchEvent from '../events/SearchEvent';
 
-const SearchStoreReactions: FC = () => {
+/**
+ * Listen for changes on the search input model so it can dispatch a `SearchEvent`.
+ */
+function useSearchStoreReactions() {
   const dispatch = useContext(EventContext);
 
   useEffect(() => {
@@ -23,8 +26,6 @@ const SearchStoreReactions: FC = () => {
       { runNow: true }
     );
   }, [dispatch]);
+}
 
-  return null;
-};
-
-export default SearchStoreReactions;
+export default useSearchStoreReactions;

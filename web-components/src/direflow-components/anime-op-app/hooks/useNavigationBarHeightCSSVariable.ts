@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 
 /**
  * Fix for viewport units on mobile
@@ -10,7 +10,11 @@ function setNavigationBarHeightCSSVariable() {
   document.documentElement.style.setProperty('--vh', vh + 'px');
 }
 
-const SetNavigationBarHeightCSSVariable: FC = () => {
+/**
+ * Sets a `--vh` css variable with the current height of the
+ * navigation bar on the document.
+ */
+function useNavigationBarHeightCSSVariable() {
   useEffect(() => {
     setNavigationBarHeightCSSVariable();
 
@@ -21,8 +25,6 @@ const SetNavigationBarHeightCSSVariable: FC = () => {
       window.removeEventListener('resize', setNavigationBarHeightCSSVariable);
     };
   }, []);
+}
 
-  return null;
-};
-
-export default SetNavigationBarHeightCSSVariable;
+export default useNavigationBarHeightCSSVariable;

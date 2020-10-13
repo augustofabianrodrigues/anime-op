@@ -6,6 +6,7 @@ import DetailsPageHeader from './DetailsPageHeader';
 import { useRouteMatch } from 'react-router-dom';
 import LoadAnimeDetailsEvent from '../../events/LoadAnimeDetailEvent';
 import AnimeDetailStore from '../../stores/AnimeDetailStore';
+import useScrollReset from '../../hooks/useScrollReset';
 import YoutubeVideoPlayer from './YoutubeVideoPlayer';
 import { empty } from '../../models/Optional';
 import MainInfo from './MainInfo';
@@ -23,6 +24,7 @@ const DetailsPage: FC = () => {
 
   const animeId = match?.params.animeId;
 
+  useScrollReset();
   useEffect(() => {
     AnimeDetailStore.replace(empty());
 

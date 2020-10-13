@@ -8,11 +8,14 @@ import Backdrop from '../slide-drawer/Backdrop';
 import SlideDrawer from '../slide-drawer/SlideDrawer';
 import FiltersDrawer from './search/filters/FiltersDrawer';
 import BackToTop from './BackToTop';
+import useScrollLocationRestore from '../../hooks/useScrollLocationRestore';
 
 const HomePage: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const handleToggleFilters = () => setDrawerOpen(() => true);
   const handleCloseDrawers = () => setDrawerOpen(() => false);
+
+  useScrollLocationRestore('/');
 
   return (
     <Styled styles={styles}>

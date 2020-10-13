@@ -7,34 +7,22 @@ import HomePage from './home/HomePage';
 import AppContext from './AppContext';
 import AppProps from './AppProps';
 import DetailsPage from './details/DetailsPage';
-import SearchStore from '../stores/SearchStore';
-import SearchStoreReactions from './stores/SearchStoreReactions';
-import SetNavigationBarHeightCSSVariable from './utils/SetNavigationBarHeightCSSVariable';
+import useNavigationBarHeightCSSVariable from '../hooks/useNavigationBarHeightCSSVariable';
+import useSearchStoreReactions from '../hooks/useSearchStoreReactions';
+import useAppPropsToStoreSync from '../hooks/useAppPropsToStoreSync';
 import LoadGenresEvent from '../events/LoadGenresEvent';
-import GenreStore from '../stores/GenreStore';
-import AnimeDetailStore from '../stores/AnimeDetailStore';
-import ScrollToTop from './utils/ScrollToTop';
 
-const App: FC<AppProps> = ({ searchResults, genres, animeDetail }) => {
+const App: FC<AppProps> = (props) => {
   const dispatch = useContext(EventContext);
 
+  useNavigationBarHeightCSSVariable();
+  useSearchStoreReactions();
+  useAppPropsToStoreSync(props);
+
+  // Dispatch load genres at startup
   useEffect(() => {
     dispatch(new LoadGenresEvent());
   }, [dispatch]);
-
-  useEffect(() => {
-    SearchStore.update((s) => {
-      s.results = { ...searchResults };
-    });
-  }, [searchResults]);
-
-  useEffect(() => {
-    GenreStore.update(() => genres);
-  }, [genres]);
-
-  useEffect(() => {
-    AnimeDetailStore.update(() => animeDetail);
-  }, [animeDetail]);
 
   const appElement = useRef(null);
   const location = useLocation();
@@ -43,10 +31,6 @@ const App: FC<AppProps> = ({ searchResults, genres, animeDetail }) => {
     <AppContext.Provider value={appElement}>
       <Styled styles={styles} scoped={false}>
         <div className="app" ref={appElement}>
-          <ScrollToTop />
-          <SetNavigationBarHeightCSSVariable />
-          <SearchStoreReactions />
-
           <SwitchTransition mode="out-in">
             <CSSTransition
               key={location.pathname}

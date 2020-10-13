@@ -1,8 +1,11 @@
 import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import AppContext from '../AppContext';
+import AppContext from '../components/AppContext';
 
-export default function ScrollToTop() {
+/**
+ * Resets the scroll top position when the `location.pathname` changes.
+ */
+function useScrollReset() {
   const appElement = useContext(AppContext);
   const { pathname } = useLocation();
 
@@ -12,6 +15,6 @@ export default function ScrollToTop() {
       behavior: 'smooth',
     });
   }, [appElement, pathname]);
-
-  return null;
 }
+
+export default useScrollReset;
