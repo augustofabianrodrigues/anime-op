@@ -24,8 +24,6 @@ function useAppIntersectionObserver<T extends HTMLElement>(
     );
 
     observer.observe(current);
-
-    return observer.disconnect;
   }, [ref, intersectionRatio, appElement]);
 
   return pastRatio;
