@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { Styled } from 'direflow-component';
 import styles from './HomePage.less';
 import Hero from './Hero';
@@ -8,12 +8,16 @@ import Backdrop from '../slide-drawer/Backdrop';
 import SlideDrawer from '../slide-drawer/SlideDrawer';
 import FiltersDrawer from './search/filters/FiltersDrawer';
 import BackToTop from './BackToTop';
+import useAppIntersectionObserver from '../../hooks/useAppIntersectionObserver';
 import useScrollLocationRestore from '../../hooks/useScrollLocationRestore';
 
 const HomePage: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const handleToggleFilters = () => setDrawerOpen(() => true);
   const handleCloseDrawers = () => setDrawerOpen(() => false);
+
+  const stickSearchBarIndicator = useRef<HTMLSpanElement>(null);
+  const stickSearchBar = useAppIntersectionObserver(stickSearchBarIndicator);
 
   useScrollLocationRestore('/');
 
@@ -31,7 +35,16 @@ const HomePage: FC = () => {
         </header>
 
         <main>
-          <SearchBar onToggleFilters={handleToggleFilters} />
+          <SearchBar
+            stuck={stickSearchBar}
+            onToggleFilters={handleToggleFilters}
+          />
+
+          <span
+            ref={stickSearchBarIndicator}
+            className="search-bar-sticky-indicator"
+          />
+
           <SearchResults />
         </main>
 
