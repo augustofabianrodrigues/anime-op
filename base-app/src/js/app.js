@@ -16,7 +16,6 @@ define([
   AnimeOpApp
 ) {
   var initialize = function () {
-    console.log(AnimeOpApp);
     // Pass in our Router module and call it's initialize function
     Router.initialize();
   };

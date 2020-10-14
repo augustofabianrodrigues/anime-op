@@ -9,11 +9,7 @@
  * It can be left blank if not needed.
  */
 
+import noop from 'lodash/noop';
 import AnimeOPApp from './direflow-components/anime-op-app';
 
-AnimeOPApp.then((element) => {
-  /**
-   * Access DOM node when it's mounted
-   */
-  console.log('anime-op-app is mounted on the DOM', element);
-});
+AnimeOPApp.then(noop);

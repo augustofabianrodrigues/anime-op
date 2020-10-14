@@ -16,7 +16,6 @@ function useAppIntersectionObserver<T extends HTMLElement>(
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        console.log(entry?.intersectionRatio);
         setPastRatio(entry?.intersectionRatio <= intersectionRatio);
       },
       {
