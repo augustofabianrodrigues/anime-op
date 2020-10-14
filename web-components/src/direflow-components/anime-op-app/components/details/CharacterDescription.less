@@ -1,24 +1,46 @@
 @import '../../less/pallette.less';
 
 .character-description {
-  .spoiler {
-    color: transparent;
-    user-select: none;
+  .actions {
+    display: flex;
+    justify-content: flex-start;
+    position: sticky;
+    top: 3.875rem;
+    padding: 0.25rem 0;
+    background: @gray-base-lighter;
 
-    &::selection {
-      color: transparent;
-    }
-
-    &::before {
-      content: 'HIDDEN SPOILER';
+    .show-spoilers-btn {
       display: inline;
       padding: 0.25rem 0.5rem;
-      background: #e53e3e;
-      background: linear-gradient(to right, #e53e3e, #f56565);
+      background: #4c51bf;
+      background: linear-gradient(to right, #4c51bf, #6b46c1);
       color: @text-base;
       font-size: 18px;
       font-weight: 500;
-      border-radius: 0.125rem;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .spoiler {
+    transition: all 300ms linear;
+  }
+
+  &:not(.show-spoilers) {
+    .show-spoilers-btn {
+      background: #e53e3e;
+      background: linear-gradient(to right, #e53e3e, #f56565);
+    }
+
+    .spoiler {
+      position: relative;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(@text-base, 0.4);
+      user-select: none;
+
+      &::selection {
+        color: transparent;
+      }
     }
   }
 }

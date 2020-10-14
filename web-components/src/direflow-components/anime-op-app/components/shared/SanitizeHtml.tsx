@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { forwardRef, Ref, RefForwardingComponent } from 'react';
 import sanitizeHtml, { IOptions as SanitizeHTMLOptions } from 'sanitize-html';
 
 function sanitize({ dirty, options }: SanitizeHtmlProps): { __html: string } {
@@ -8,12 +8,16 @@ function sanitize({ dirty, options }: SanitizeHtmlProps): { __html: string } {
 }
 
 interface SanitizeHtmlProps {
+  ref?: Ref<HTMLDivElement>;
   dirty: string;
   options?: SanitizeHTMLOptions;
 }
 
-const SanitizeHtmlComponent: FC<SanitizeHtmlProps> = (props) => {
-  return <div dangerouslySetInnerHTML={sanitize(props)} />;
-};
+const SanitizeHtmlComponent: RefForwardingComponent<
+  HTMLDivElement,
+  SanitizeHtmlProps
+> = forwardRef<HTMLDivElement, SanitizeHtmlProps>((props, ref) => {
+  return <div ref={ref} dangerouslySetInnerHTML={sanitize(props)} />;
+});
 
 export default SanitizeHtmlComponent;

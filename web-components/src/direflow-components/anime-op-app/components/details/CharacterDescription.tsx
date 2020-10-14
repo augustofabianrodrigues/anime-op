@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { Styled } from 'direflow-component';
+import classNames from 'classnames';
 import styles from './CharacterDescription.less';
 import RegularSection from './RegularSection';
 import SanitizeHtml from '../shared/SanitizeHtml';
@@ -19,19 +20,45 @@ const options: SanitizeHtmlOptions = {
   },
 };
 
-const renderDescription = ({ description }: CharacterDescriptionProps) => {
-  return description ? (
-    <SanitizeHtml dirty={description} options={options} />
-  ) : (
-    'N/A'
-  );
-};
+const CharacterDescription: FC<CharacterDescriptionProps> = ({
+  description,
+}) => {
+  const [showSpoilers, setShowSpoilers] = useState(false);
 
-const CharacterDescription: FC<CharacterDescriptionProps> = (props) => {
+  const descriptionElement = useRef<HTMLDivElement>(null);
+  const hasSpoilers =
+    descriptionElement.current !== null &&
+    descriptionElement.current.querySelectorAll('.spoiler').length !== 0;
+
   return (
     <Styled styles={styles}>
-      <RegularSection title="Description" className="character-description">
-        {renderDescription(props)}
+      <RegularSection
+        title="Description"
+        className={classNames('character-description', {
+          'show-spoilers': showSpoilers,
+        })}
+      >
+        {hasSpoilers && (
+          <div className="actions">
+            <button
+              className="show-spoilers-btn"
+              type="button"
+              onClick={() => setShowSpoilers(!showSpoilers)}
+            >
+              {showSpoilers ? 'Hide' : 'Show'} Spoilers
+            </button>
+          </div>
+        )}
+
+        {description ? (
+          <SanitizeHtml
+            ref={descriptionElement}
+            dirty={description}
+            options={options}
+          />
+        ) : (
+          'N/A'
+        )}
       </RegularSection>
     </Styled>
   );
