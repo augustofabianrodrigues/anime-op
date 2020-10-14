@@ -8,15 +8,16 @@ import AppContext from './AppContext';
 import AppProps from './AppProps';
 import DetailsPage from './details/DetailsPage';
 import useNavigationBarHeightCSSVariable from '../hooks/useNavigationBarHeightCSSVariable';
-import useSearchStoreReactions from '../hooks/useSearchStoreReactions';
+import useAppSearchStoreReactions from '../hooks/useAppSearchStoreReactions';
 import useAppPropsToStoreSync from '../hooks/useAppPropsToStoreSync';
 import LoadGenresEvent from '../events/LoadGenresEvent';
 
 const App: FC<AppProps> = (props) => {
   const dispatch = useContext(EventContext);
+  const appElement = useRef(null);
 
   useNavigationBarHeightCSSVariable();
-  useSearchStoreReactions();
+  useAppSearchStoreReactions(appElement);
   useAppPropsToStoreSync(props);
 
   // Dispatch load genres at startup
@@ -24,7 +25,6 @@ const App: FC<AppProps> = (props) => {
     dispatch(new LoadGenresEvent());
   }, [dispatch]);
 
-  const appElement = useRef(null);
   const location = useLocation();
 
   return (
