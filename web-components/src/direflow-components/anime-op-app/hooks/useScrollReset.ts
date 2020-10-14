@@ -12,7 +12,6 @@ function useScrollReset() {
   useEffect(() => {
     appElement.current?.scrollTo({
       top: 0,
-      behavior: 'smooth',
     });
   }, [appElement, pathname]);
 }
