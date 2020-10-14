@@ -1,0 +1,77 @@
+@import '../../less/loaders.less';
+@import '../../less/pallette.less';
+
+.content.content-skeleton-loader {
+  .player {
+    width: 100%;
+    height: 18rem;
+    background: @gray-base-lighter;
+  }
+
+  .character-gallery {
+    background: @gray-base-lighter;
+    min-height: 12rem;
+  }
+
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    row-gap: 0.25rem;
+    padding: 1rem;
+
+    .title {
+      .loader-text();
+      width: 10rem;
+    }
+
+    .subtype-and-rating {
+      .loader-text();
+      width: 11rem;
+    }
+
+    .episode-count {
+      .loader-text();
+      width: 8rem;
+    }
+  }
+
+  .regular-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+
+    .section-title {
+      .loader-text();
+      width: 10rem;
+    }
+
+    .line-100 {
+      .loader-text();
+      width: 100%;
+    }
+
+    .line-90 {
+      .loader-text();
+      width: 90%;
+    }
+
+    .line-80 {
+      .loader-text();
+      width: 80%;
+    }
+
+    .line-75 {
+      .loader-text();
+      width: 75%;
+    }
+
+    .line-40 {
+      .loader-text();
+      width: 40%;
+    }
+  }
+}
