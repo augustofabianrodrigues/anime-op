@@ -7,8 +7,10 @@ import ReactSixteenAdapter from 'enzyme-adapter-react-16';
 import 'jest-environment-enzyme';
 import 'jest-enzyme';
 
+jest.mock('./hooks/useAppIntersectionObserver');
 jest.mock('./hooks/useElementSize');
 jest.mock('./utils/generateId');
 
 Enzyme.configure({ adapter: new ReactSixteenAdapter() });
 Element.prototype.scrollTo = () => {};
+

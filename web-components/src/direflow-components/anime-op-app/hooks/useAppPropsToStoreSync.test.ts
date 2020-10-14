@@ -9,7 +9,6 @@ import AgeRatingEnum from '../models/AgeRatingEnum';
 import { empty } from '../models/Optional';
 
 const TestComponent: FC<AppProps> = (props) => {
-  console.log('passou fatiou');
   useAppPropsToStoreSync(props);
   return null;
 };
