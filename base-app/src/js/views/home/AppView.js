@@ -49,6 +49,7 @@ define([
         subtype: attributes.subtype,
         synopsis: attributes.synopsis,
         titles: attributes.titles,
+        coverImage: attributes.coverImage,
         youtubeVideoId: attributes.youtubeVideoId,
 
         categories: (

@@ -16,6 +16,7 @@ define([
       'ageRatingGuide',
       'subtype',
       'episodeCount',
+      'coverImage',
       'youtubeVideoId',
 
       // Relationships

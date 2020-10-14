@@ -4,6 +4,7 @@ import CategoryModel from './CategoryModel';
 import CharacterModel from './CharacterModel';
 import GenreModel from './GenreModel';
 import StreamerModel from './StreamerModel';
+import AnimeImageModel from './AnimeImageModel';
 
 interface AnimeDetailModel {
   id: string;
@@ -14,6 +15,7 @@ interface AnimeDetailModel {
   episodeCount?: number;
   subtype?: AnimeSubtypeEnum;
   synopsis?: number;
+  coverImage?: AnimeImageModel;
   titles: {
     [lang: string]: string;
   };

@@ -1,6 +1,6 @@
 import AnimeImageMetaModel from './AnimeImageMetaModel';
 
-interface AnimePosterImageModel {
+interface AnimeImageModel {
   tiny?: string;
   small?: string;
   medium?: string;
@@ -9,4 +9,4 @@ interface AnimePosterImageModel {
   meta?: AnimeImageMetaModel;
 }
 
-export default AnimePosterImageModel;
+export default AnimeImageModel;

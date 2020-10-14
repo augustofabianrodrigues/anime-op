@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import AnimePosterImageModel from '../../../../models/AnimeImageModel';
+import AnimeImageModel from '../../../../models/AnimeImageModel';
 import AnimeResponsiveAsyncImage from '../../../shared/AnimeResponsiveAsyncImage';
 import MissingImageIllustration from './MissingImageIllustration';
 
 interface AnimePosterImageProps {
   canonicalTitle: string;
-  posterImage?: AnimePosterImageModel;
+  posterImage?: AnimeImageModel;
 }
 const AnimePosterImage: FC<AnimePosterImageProps> = ({
   canonicalTitle,

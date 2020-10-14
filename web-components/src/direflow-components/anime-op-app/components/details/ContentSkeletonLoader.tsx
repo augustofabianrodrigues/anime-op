@@ -6,7 +6,7 @@ const ContentSkeletonLoader: FC = () => {
   return (
     <Styled styles={styles}>
       <div className="content content-skeleton-loader">
-        <div className="player" />
+        <div className="anime-details-media" />
 
         <div className="main-info">
           <div className="title" />

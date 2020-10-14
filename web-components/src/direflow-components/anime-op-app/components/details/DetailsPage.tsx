@@ -7,7 +7,6 @@ import { useRouteMatch } from 'react-router-dom';
 import LoadAnimeDetailsEvent from '../../events/LoadAnimeDetailEvent';
 import AnimeDetailStore from '../../stores/AnimeDetailStore';
 import useScrollReset from '../../hooks/useScrollReset';
-import YoutubeVideoPlayer from './YoutubeVideoPlayer';
 import { empty } from '../../models/Optional';
 import MainInfo from './MainInfo';
 import RegularSection from './RegularSection';
@@ -16,11 +15,16 @@ import Streamers from './Streamers';
 import CharacterGallery from './CharacterGallery';
 import AnimeDetailModel from '../../models/AnimeDetailModel';
 import ContentSkeletonLoader from './ContentSkeletonLoader';
+import AnimeMedia from './AnimeMedia';
 
 const renderContent = (animeDetail: AnimeDetailModel) => {
   return (
     <main className="content">
-      <YoutubeVideoPlayer youtubeVideoId={animeDetail.youtubeVideoId} />
+      <AnimeMedia
+        canonicalTitle={animeDetail.canonicalTitle}
+        coverImage={animeDetail.coverImage}
+        youtubeVideoId={animeDetail.youtubeVideoId}
+      />
 
       <MainInfo
         canonicalTitle={animeDetail.canonicalTitle}
