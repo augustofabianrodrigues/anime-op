@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of unchecked General Audiences, Parental Guidance Suggest, and Restricted 1`] = `
+<div
+  className="age-rating"
+>
+  <h3>
+    Age Rating
+  </h3>
+  <div
+    className="labeled-checkbox"
+    onClick={[Function]}
+  >
+    <div
+      className="labeled-checkbox-control"
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          className="labeled-checkbox-control--check"
+          d="M9 11L12 14L22 4"
+          stroke="#7F9CF5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          className="labeled-checkbox-control--square"
+          d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+          stroke="#FBFDFE"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
+    <label>
+      General Audiences
+    </label>
+  </div>
+  <div
+    className="labeled-checkbox"
+    onClick={[Function]}
+  >
+    <div
+      className="labeled-checkbox-control"
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          className="labeled-checkbox-control--check"
+          d="M9 11L12 14L22 4"
+          stroke="#7F9CF5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          className="labeled-checkbox-control--square"
+          d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+          stroke="#FBFDFE"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
+    <label>
+      Parental Guidance Suggest
+    </label>
+  </div>
+  <div
+    className="labeled-checkbox"
+    onClick={[Function]}
+  >
+    <div
+      className="labeled-checkbox-control"
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          className="labeled-checkbox-control--check"
+          d="M9 11L12 14L22 4"
+          stroke="#7F9CF5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          className="labeled-checkbox-control--square"
+          d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+          stroke="#FBFDFE"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
+    <label>
+      Restricted
+    </label>
+  </div>
+</div>
+`;
+
+exports[`matches snapshot of unchecked General Audiences, and Parental Guidance Suggest and checked Restricted 1`] = `
+<div
+  className="age-rating"
+>
+  <h3>
+    Age Rating
+  </h3>
+  <div
+    className="labeled-checkbox"
+    onClick={[Function]}
+  >
+    <div
+      className="labeled-checkbox-control"
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          className="labeled-checkbox-control--check"
+          d="M9 11L12 14L22 4"
+          stroke="#7F9CF5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          className="labeled-checkbox-control--square"
+          d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+          stroke="#FBFDFE"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
+    <label>
+      General Audiences
+    </label>
+  </div>
+  <div
+    className="labeled-checkbox"
+    onClick={[Function]}
+  >
+    <div
+      className="labeled-checkbox-control"
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          className="labeled-checkbox-control--check"
+          d="M9 11L12 14L22 4"
+          stroke="#7F9CF5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          className="labeled-checkbox-control--square"
+          d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+          stroke="#FBFDFE"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
+    <label>
+      Parental Guidance Suggest
+    </label>
+  </div>
+  <div
+    className="labeled-checkbox"
+    onClick={[Function]}
+  >
+    <div
+      className="labeled-checkbox-control active"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          className="labeled-checkbox-control--check"
+          d="M9 11L12 14L22 4"
+          stroke="#7F9CF5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          className="labeled-checkbox-control--square"
+          d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+          stroke="#FBFDFE"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
+    <label>
+      Restricted
+    </label>
+  </div>
+</div>
+`;
