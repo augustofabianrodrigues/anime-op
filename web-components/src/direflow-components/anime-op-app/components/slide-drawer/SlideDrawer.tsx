@@ -8,15 +8,6 @@ interface SlideDrawerProps {
 }
 
 const SlideDrawer: FC<SlideDrawerProps> = ({ show, children }) => {
-  useEffect(() => {
-    const handleTouchMove = (e: TouchEvent) => {
-      console.log(e);
-    };
-
-    document.addEventListener('touchmove', handleTouchMove);
-    return () => document.removeEventListener('touchmove', handleTouchMove);
-  }, []);
-
   return (
     <Styled styles={styles}>
       <div className={classNames('slide-drawer', { open: show })}>
