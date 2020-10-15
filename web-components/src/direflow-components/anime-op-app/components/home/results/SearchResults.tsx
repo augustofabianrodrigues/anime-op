@@ -25,7 +25,7 @@ const SearchResults: FC = () => {
 
   const { hasMore, items, loading } = SearchStore.useState((s) => s.results);
 
-  const [loadMore, setLoadMore] = useState<() => void>(() => noop);
+  const [loadMore, setLoadMore] = useState<() => void>(noop);
 
   useEffect(() => {
     setLoadMore(() => {
