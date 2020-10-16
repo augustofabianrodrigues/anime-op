@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
 import { Styled } from 'direflow-component';
-import classNames from 'classnames';
 import styles from './SlideDrawer.less';
 
 interface SlideDrawerProps {
-  show: boolean;
+  translateX: number;
 }
 
-const SlideDrawer: FC<SlideDrawerProps> = ({ show, children }) => {
+const SlideDrawer: FC<SlideDrawerProps> = ({ translateX, children }) => {
+  const transform = { transform: `translateX(${translateX.toFixed(0)}px)` };
+
   return (
     <Styled styles={styles}>
-      <div className={classNames('slide-drawer', { open: show })}>
+      <div style={transform} className="slide-drawer">
         {children}
       </div>
     </Styled>

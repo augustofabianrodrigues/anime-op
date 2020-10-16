@@ -9,6 +9,7 @@ import 'jest-enzyme';
 
 jest.mock('./hooks/useAppIntersectionObserver');
 jest.mock('./hooks/useElementSize');
+jest.mock('./hooks/useTouchSlideHandle');
 jest.mock('./utils/generateId');
 
 Enzyme.configure({ adapter: new ReactSixteenAdapter() });

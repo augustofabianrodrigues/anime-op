@@ -3,13 +3,18 @@ import { Styled } from 'direflow-component';
 import styles from './Backdrop.less';
 
 interface BackdropProps {
+  opacity?: number;
   onClick: () => void;
 }
 
-const Backdrop: FC<BackdropProps> = ({ onClick }) => {
+const Backdrop: FC<BackdropProps> = ({ opacity = 1, onClick }) => {
+  const opacityCSS = {
+    opacity,
+  };
+
   return (
     <Styled styles={styles}>
-      <div className="backdrop" onClick={onClick} />
+      <div style={opacityCSS} className="backdrop" onClick={onClick} />
     </Styled>
   );
 };
