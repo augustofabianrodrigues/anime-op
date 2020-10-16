@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import { Styled } from 'direflow-component';
 import styles from './HomePage.less';
 import Hero from './Hero';
@@ -10,24 +10,41 @@ import FiltersDrawer from './search/filters/FiltersDrawer';
 import BackToTop from './BackToTop';
 import useAppIntersectionObserver from '../../hooks/useAppIntersectionObserver';
 import useScrollLocationRestore from '../../hooks/useScrollLocationRestore';
+import useTouchSlideHandle from '../../hooks/useTouchSlideHandle';
+import { SetOffsetStateOption } from '../../hooks/useTouchSlideHandle/actions';
+
+const SLIDE_DRAWER_WIDTH = 320;
 
 const HomePage: FC = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const handleToggleFilters = () => setDrawerOpen(() => true);
-  const handleCloseDrawers = () => setDrawerOpen(() => false);
+  const [slideDrawerTranslateX, setSlideDrawerState] = useTouchSlideHandle(
+    SLIDE_DRAWER_WIDTH
+  );
+
+  const handleToggleFilters = () =>
+    setSlideDrawerState(SetOffsetStateOption.Open);
+  const handleCloseDrawers = () =>
+    setSlideDrawerState(SetOffsetStateOption.Closed);
 
   const stickSearchBarIndicator = useRef<HTMLSpanElement>(null);
   const stickSearchBar = useAppIntersectionObserver(stickSearchBarIndicator);
 
   useScrollLocationRestore('/');
 
+  const showBackdrop = slideDrawerTranslateX > -SLIDE_DRAWER_WIDTH;
+  const backdropOpacity = Math.max(
+    ((slideDrawerTranslateX || 0) + SLIDE_DRAWER_WIDTH) / SLIDE_DRAWER_WIDTH,
+    0
+  );
+
   return (
     <Styled styles={styles}>
       <div className="home-page">
-        <SlideDrawer show={drawerOpen}>
+        <SlideDrawer translateX={slideDrawerTranslateX}>
           <FiltersDrawer onClose={handleCloseDrawers} />
         </SlideDrawer>
-        {drawerOpen && <Backdrop onClick={handleCloseDrawers} />}
+        {showBackdrop && (
+          <Backdrop opacity={backdropOpacity} onClick={handleCloseDrawers} />
+        )}
 
         <header>
           <h1 className="sr-only-title">アニメ OP</h1>

@@ -24,6 +24,21 @@ function useAppIntersectionObserver<T extends HTMLElement>(
     );
 
     observer.observe(current);
+
+    return () => {
+      try {
+        if (current) {
+          observer.unobserve(current);
+        }
+
+        observer.disconnect();
+      } catch (err) {
+        console.error(
+          'Unexpected error when trying to disconnect from observer:',
+          err
+        );
+      }
+    };
   }, [ref, intersectionRatio, appElement]);
 
   return pastRatio;
