@@ -39,8 +39,6 @@ const SWIPE_OFFSET_TOLERANCE = 0.5;
 const SWIPE_HORIZONTAL_TOLERANCE = 0.2;
 
 const reducer: TouchSlideHandleReducer = (state, action) => {
-  // console.log(state, action);
-
   switch (action.type) {
     case TOUCH_START: {
       const { pageX, threshold } = action.payload;
